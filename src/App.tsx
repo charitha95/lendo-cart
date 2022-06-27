@@ -1,3 +1,4 @@
+import Banner from "./components/Banner";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 
@@ -6,7 +7,7 @@ function App() {
     <div>
       <Header />
       <MainContent>
-        <span>hi</span>
+        <Banner />
       </MainContent>
     </div>
   );

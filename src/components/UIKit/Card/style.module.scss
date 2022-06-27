@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+
+.card {
+  border-radius: 32px;
+  overflow: hidden;
+  &.dark {
+    background: $primary-color;
+  }
+  &.light {
+    background: #fff;
+  }
+}

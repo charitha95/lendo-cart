@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.banner-wrapper {
+  padding-top: 50px;
+  p {
+    font-family: $font-family-title;
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  .banner {
+    position: relative;
+    height: 312px;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    .info {
+      padding-left: 32px;
+      color: #fff;
+
+      h2 {
+        font-family: $font-family-special;
+        font-weight: 300;
+        font-size: 48px;
+      }
+      p {
+        font-family: $font-family-default;
+        max-width: 420px;
+        font-size: 12px;
+        padding-top: 12px;
+      }
+    }
+
+    .promo-img {
+      width: 470px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      z-index: -1;
+      width: 900px;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-image: url("../../assets/branding/Intersection.svg");
+    }
+  }
+}
