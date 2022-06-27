@@ -31,7 +31,8 @@ $border-radius-default: 10px;
 $border-radius-p-btn: $border-radius-default;
 $border-radius-s-btn: 50px;
 $border-radius-input: $border-radius-default;
-$border-radius-chip: 50px;
+$border-radius-chip: 50%;
+$border-radius-bubble: 50%;
 
 // shadows
 $box-shadow-light: 0px 5px 30px rgba(0, 0, 0, 0.116);

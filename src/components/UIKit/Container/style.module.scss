@@ -9,19 +9,15 @@
 
   @include respond-to("xsmall") {
     width: 540px;
-    color: red;
   }
   @include respond-to("small") {
     width: 720px;
-    color: blue;
   }
   @include respond-to("medium") {
     width: 960px;
-    color: purple;
   }
 
   @include respond-to("large") {
     width: 1140px;
-    color: aquamarine;
   }
 }

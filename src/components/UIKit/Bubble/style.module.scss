@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  font-weight: 500;
+
+  &.white {
+    background-color: #fff;
+    color: $danger-color;
+  }
+  &.red {
+    background-color: $danger-color;
+    color: #fff;
+  }
+}
