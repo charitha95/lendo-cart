@@ -1,11 +1,12 @@
 import classNames from "./style.module.scss";
 
-function Layout() {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+function Layout({ children }: LayoutProps) {
   return (
     <div className={classNames.content}>
-      <div className={classNames.container}>
-        <h1>Hey</h1>
-      </div>
+      <div className={classNames.container}>{children}</div>
     </div>
   );
 }

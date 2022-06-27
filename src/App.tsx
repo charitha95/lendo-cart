@@ -4,7 +4,9 @@ import Layout from "./components/Layout";
 function App() {
   return (
     <>
-      <Layout />
+      <Layout>
+        <p className={classNames.appStyle}>hi</p>
+      </Layout>
       <p className={classNames.appStyle}>hi</p>
     </>
   );
