@@ -15,7 +15,8 @@ function PrimaryButton({ text, icon, variant, onClick }: PrimaryButtonProps) {
       className={`${classNames[variant]} ${classNames["primary-btn"]}`}
       onClick={onClick}
     >
-      <img src={icon} alt="cart" /> {text}
+      <img src={icon} alt="cart" />
+      {text}
       <Bubble text="5" variant={variant === "light" ? "red" : "white"} />
     </button>
   );

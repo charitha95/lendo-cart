@@ -13,4 +13,10 @@
     display: flex;
     justify-content: space-between;
   }
+  .actions {
+    display: flex;
+    > :first-child {
+      margin-right: 16px;
+    }
+  }
 }
