@@ -8,6 +8,10 @@ function App() {
       <Header />
       <MainContent>
         <Banner />
+        <div className="grid">
+          <div className="col-12 col-md-8">Im a column 2/3 wide</div>
+          <div className="col-12 col-md-4">Im a column 1/3 wide</div>
+        </div>
       </MainContent>
     </div>
   );
