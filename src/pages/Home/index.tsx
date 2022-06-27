@@ -1,19 +1,76 @@
 import Banner from "../../components/Banner";
 import ProductCard from "../../components/ProductCard";
+import classNames from "./style.module.scss";
+import prodImage from "../../assets/images/ps4.png";
 
 function Home() {
   return (
     <>
       <Banner />
-      <div className="grid">
-        <div className="col-12 col-md-3">
-          <ProductCard />
+      <div className={`${classNames["product-list"]} grid`}>
+        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
+          <ProductCard
+            brand="Philips"
+            image={prodImage}
+            name="Philips hue bulb"
+            price="290kr"
+            onClick={() => {}}
+          />
         </div>
-        <div className="col-12 col-md-3">2</div>
-        <div className="col-12 col-md-3">3</div>
-        <div className="col-12 col-md-3">4</div>
-        <div className="col-12 col-md-3">5</div>
-        <div className="col-12 col-md-3">6</div>
+        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
+          <ProductCard
+            brand="Philips"
+            image={prodImage}
+            name="Philips hue bulb"
+            price="290kr"
+            onClick={() => {}}
+          />
+        </div>
+        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
+          <ProductCard
+            brand="Philips"
+            image={prodImage}
+            name="Philips hue bulb"
+            price="290kr"
+            onClick={() => {}}
+          />
+        </div>
+        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
+          <ProductCard
+            brand="Philips"
+            image={prodImage}
+            name="Philips hue bulb"
+            price="290kr"
+            onClick={() => {}}
+          />
+        </div>
+        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
+          <ProductCard
+            brand="Philips"
+            image={prodImage}
+            name="Philips hue bulb"
+            price="290kr"
+            onClick={() => {}}
+          />
+        </div>
+        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
+          <ProductCard
+            brand="Philips"
+            image={prodImage}
+            name="Philips hue bulb"
+            price="290kr"
+            onClick={() => {}}
+          />
+        </div>
+        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
+          <ProductCard
+            brand="Philips"
+            image={prodImage}
+            name="Philips hue bulb"
+            price="290kr"
+            onClick={() => {}}
+          />
+        </div>
       </div>
     </>
   );

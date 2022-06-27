@@ -3,11 +3,12 @@ import classNames from "./style.module.scss";
 type CardProps = {
   children: React.ReactNode;
   variant: "dark" | "light";
+  classes?: string;
 };
 
-function Card({ children, variant }: CardProps) {
+function Card({ children, variant, classes = "" }: CardProps) {
   return (
-    <div className={`${classNames[variant]} ${classNames.card}`}>
+    <div className={`${classNames[variant]} ${classNames.card} ${classes}`}>
       {children}
     </div>
   );

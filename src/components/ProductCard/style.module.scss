@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.product-card {
+  padding: 50px;
+  min-height: 210px;
+  display: flex;
+  align-items: center;
+  img {
+    width: 100%;
+  }
+}
+.info {
+  padding: 16px 15px;
+  display: flex;
+  justify-content: space-between;
+  
+  .name {
+    font-size: 18px;
+    font-weight: 500;
+    color: $title-color;
+    font-family: $font-family-title;
+  }
+
+  .price {
+    font-size: 18px;
+    font-weight: 800;
+    color: $text-dark-color;
+    font-family: $font-family-default;
+  }
+}
+
+.action {
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+
+  .brand {
+    font-size: 18px;
+    font-weight: 200;
+    color: $text-tone-color;
+    font-family: $font-family-default;
+  }
+}
