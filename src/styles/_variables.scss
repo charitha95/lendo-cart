@@ -39,7 +39,8 @@ $box-shadow-medium: 0px 25px 30px #0000000f;
 
 //breakpoints
 $breakpoints: (
-  'small':  767px,
-  'medium': 992px,
-  'large':  1200px
+  "xsmall": 540px,
+  "small": 720px,
+  "medium": 960px,
+  "large": 1140px
 ) !default;

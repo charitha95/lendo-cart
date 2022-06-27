@@ -2,3 +2,12 @@
   transition: all 0.35s ease-out;
   -webkit-transition: all 0.35s ease-out !important;
 }
+
+%bg-img {
+  content: "";
+  display: block;
+  background-size: 450px 450px;
+  height: 450px;
+  width: 450px;
+  position: absolute;
+}

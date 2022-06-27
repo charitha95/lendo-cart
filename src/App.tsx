@@ -1,7 +1,13 @@
 import classNames from "./app.module.scss";
+import Layout from "./components/Layout";
 
 function App() {
-  return <h1 className={classNames.appStyle}>hi</h1>;
+  return (
+    <>
+      <Layout />
+      <p className={classNames.appStyle}>hi</p>
+    </>
+  );
 }
 
 export default App;
