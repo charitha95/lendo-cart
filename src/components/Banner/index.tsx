@@ -1,8 +1,12 @@
 import Card from "../UIKit/Card";
 import classNames from "./style.module.scss";
 import couchImage from "../../assets/branding/couch.svg";
+import arrowIcon from "../../assets/icons/arrow-blk.svg";
+import { SecondaryButton } from "../UIKit/Button";
 
 function Banner() {
+  const handleLeanMoreClick = () => {};
+
   return (
     <div className={classNames["banner-wrapper"]}>
       <p>
@@ -17,6 +21,12 @@ function Banner() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore.
             </p>
+            <SecondaryButton
+              text="Learn more"
+              icon={arrowIcon}
+              variant="light"
+              onClick={handleLeanMoreClick}
+            />
           </section>
           <img
             className={classNames["promo-img"]}

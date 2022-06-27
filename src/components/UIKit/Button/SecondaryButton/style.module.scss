@@ -1,14 +1,21 @@
 @import "../../../../styles/variables";
 @import "../../../../styles/placeholder";
 
-.secondary-btn {
-  background: #fff;
+.primary-btn {
+  border-radius: $border-radius-s-btn;
+  @extend %btn;
 
-  padding: 14px 21px;
-  border-radius: $border-radius-p-btn;
-  border: none;
-  display: inline-block;
-  line-height: 1;
-  font-size: 16px;
-  font-family: Nunito;
+  &.dark {
+    background: $primary-color;
+    color: #fff;
+  }
+
+  &.light {
+    background: #fff;
+    color: $text-color;
+  }
+
+  img {
+    margin-left: 12px;
+  }
 }

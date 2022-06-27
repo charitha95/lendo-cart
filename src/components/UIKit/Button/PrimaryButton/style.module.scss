@@ -2,6 +2,9 @@
 @import "../../../../styles/placeholder";
 
 .primary-btn {
+  border-radius: $border-radius-p-btn;
+  @extend %btn;
+
   &.dark {
     background: $primary-color;
     color: #fff;
@@ -12,14 +15,6 @@
     color: $text-color;
   }
 
-  display: flex;
-  align-items: center;
-  padding: 14px 21px;
-  border-radius: $border-radius-p-btn;
-  border: none;
-  line-height: 1;
-  font-size: 16px;
-  font-family: Nunito;
   img {
     margin-right: 12px;
   }
