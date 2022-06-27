@@ -1,6 +1,26 @@
 @import "../../styles/variables";
+@import "../../styles/placeholder";
+
+.product-wrapper {
+  cursor: pointer;
+  &:hover {
+    .product-card {
+      box-shadow: $box-shadow-strong;
+    }
+    .hover-card {
+      background: #fff;
+    }
+    .action-btn {
+      opacity: 1;
+      top: 0;
+      position: relative;
+    }
+  }
+}
 
 .product-card {
+  @extend %ease;
+  z-index: 2;
   padding: 50px;
   min-height: 210px;
   display: flex;
@@ -13,7 +33,7 @@
   padding: 16px 15px;
   display: flex;
   justify-content: space-between;
-  
+  padding-top: 50px;
   .name {
     font-size: 18px;
     font-weight: 500;
@@ -33,6 +53,7 @@
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 15px;
 
   .brand {
     font-size: 18px;
@@ -40,4 +61,21 @@
     color: $text-tone-color;
     font-family: $font-family-default;
   }
+
+  .action-btn {
+    padding: 10px 21px;
+    opacity: 0;
+    top: -15px;
+    position: relative;
+    @extend %ease;
+  }
+}
+
+.hover-card {
+  z-index: -2;
+  margin-top: -30px;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  position: relative;
+  @extend %ease;
 }

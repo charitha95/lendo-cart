@@ -1,6 +1,6 @@
 %ease {
-  transition: all 0.35s ease-in-out;
-  -webkit-transition: all 0.35s ease-in-out !important;
+  transition: all 0.18s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out !important;
 }
 
 %bg-img {
@@ -21,4 +21,5 @@
   line-height: 1;
   font-size: 16px;
   font-family: Nunito;
+  cursor: pointer;
 }

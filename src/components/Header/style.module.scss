@@ -9,6 +9,7 @@
   position: fixed;
   z-index: 10;
   top: 0;
+  box-shadow: $box-shadow-strong;
   .content {
     display: flex;
     justify-content: space-between;

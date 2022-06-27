@@ -1,7 +1,7 @@
 import classNames from "./style.module.scss";
 
 type CardProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variant: "dark" | "light";
   classes?: string;
 };

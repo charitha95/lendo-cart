@@ -13,24 +13,27 @@ type ProductCardProps = {
 
 function ProductCard({ image, name, price, brand, onClick }: ProductCardProps) {
   return (
-    <>
+    <div className={classNames["product-wrapper"]}>
       <Card variant="light" classes={classNames["product-card"]}>
         <img src={image} alt="product" />
       </Card>
-      <section className={classNames.info}>
-        <p className={classNames.name}>{name}</p>
-        <p className={classNames.price}>{price}</p>
-      </section>
-      <section className={classNames.action}>
-        <p className={classNames.brand}>{brand}</p>
-        <SecondaryButton
-          icon={arrowIcon}
-          variant="dark"
-          text="View"
-          onClick={onClick}
-        />
-      </section>
-    </>
+      <div className={classNames["hover-card"]}>
+        <section className={classNames.info}>
+          <p className={classNames.name}>{name}</p>
+          <p className={classNames.price}>{price}</p>
+        </section>
+        <section className={classNames.action}>
+          <p className={classNames.brand}>{brand}</p>
+          <SecondaryButton
+            icon={arrowIcon}
+            variant="dark"
+            text="View"
+            onClick={onClick}
+            classes={classNames["action-btn"]}
+          />
+        </section>
+      </div>
+    </div>
   );
 }
 
