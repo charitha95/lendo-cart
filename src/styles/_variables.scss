@@ -1,0 +1,45 @@
+/**
+* @desc         setup variables.
+* @requires     none
+*/
+
+// [color - variables]
+// branding
+$primary-color: #2ac768;
+$danger-color: #ff0000;
+$danger-light-color: #e9bbbb;
+$warn-color: #dab214;
+$warn-light-color: #eae0b2;
+
+// text
+$text-color: #292828;
+$title-color: #424a4b;
+$text-tone-color: #707070;
+$text-light-color: #a2a2a2;
+
+// body
+$body-background: #f2f0f0;
+
+// font family
+$font-family-title: "Montserrat", sans-serif;
+$font-family-default: "Nunito", sans-serif;
+
+// border colors
+
+// border radius
+$border-radius-default: 10px;
+$border-radius-p-btn: $border-radius-default;
+$border-radius-s-btn: 50px;
+$border-radius-input: $border-radius-default;
+$border-radius-chip: 50px;
+
+// shadows
+$box-shadow-light: 0px 5px 30px rgba(0, 0, 0, 0.116);
+$box-shadow-medium: 0px 25px 30px #0000000f;
+
+//breakpoints
+$breakpoints: (
+  'small':  767px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
