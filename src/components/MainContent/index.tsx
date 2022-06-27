@@ -1,11 +1,11 @@
 import Container from "../UIKit/Container";
 import classNames from "./style.module.scss";
 
-type LayoutProps = {
+type MainContentProps = {
   children: React.ReactNode;
 };
 
-function Layout({ children }: LayoutProps) {
+function MainContent({ children }: MainContentProps) {
   return (
     <div className={classNames.content}>
       <Container>{children}</Container>
@@ -13,4 +13,4 @@ function Layout({ children }: LayoutProps) {
   );
 }
 
-export default Layout;
+export default MainContent;

@@ -1,9 +1,16 @@
 @import "../../styles/variables";
 
 .header {
+  align-items: center;
+  display: flex;
   background: $primary-color;
   height: 85px;
   width: 100%;
   position: fixed;
   z-index: 1;
+  top: 0;
+  .content {
+    display: flex;
+    justify-content: space-between;
+  }
 }

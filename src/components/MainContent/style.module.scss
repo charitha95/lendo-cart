@@ -4,6 +4,7 @@
 .content {
   width: 100%;
   position: relative;
+  margin-top: 82px;
   &::before {
     @extend %bg-img;
     background-image: url("../../assets/bg-left.svg");

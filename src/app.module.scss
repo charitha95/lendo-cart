@@ -1,9 +1,0 @@
-@import "./styles/mixins";
-
-.appStyle {
-  @include respond-to("small") {
-    color: red;
-  }
-
-  color: blue;
-}

@@ -1,15 +1,14 @@
-import classNames from "./app.module.scss";
 import Header from "./components/Header";
-import Layout from "./components/Layout";
+import MainContent from "./components/MainContent";
 
 function App() {
   return (
-    <>
+    <div>
       <Header />
-      <Layout>
-        <p className={classNames.appStyle}>hi</p>
-      </Layout>
-    </>
+      <MainContent>
+        <p>hey</p>
+      </MainContent>
+    </div>
   );
 }
 
