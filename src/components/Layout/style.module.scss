@@ -1,5 +1,4 @@
 @import "../../styles/variables";
-@import "../../styles/mixins";
 @import "../../styles/placeholder";
 
 .content {
@@ -15,31 +14,5 @@
     background-image: url("../../assets/bg-right.svg");
     right: -20px;
     top: -20px;
-  }
-}
-
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-
-  @include respond-to("xsmall") {
-    width: 540px;
-    color: red;
-  }
-  @include respond-to("small") {
-    width: 720px;
-    color: blue;
-  }
-  @include respond-to("medium") {
-    width: 960px;
-    color: purple;
-  }
-
-  @include respond-to("large") {
-    width: 1140px;
-    color: aquamarine;
   }
 }
