@@ -24,7 +24,8 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(0);
   const [maxQnt, setMaxQnt] = useState(0);
   const [variant, setVariant] = useState({} as Variant);
-  const [variantOption, setVariantOption] = useState("");
+  const [selectedVariant, setSelectedVariant] = useState("");
+  const [noVariant, setNoVariant] = useState(false);
   const [product, setProduct] = useState({} as Product);
 
   const canDecrement = quantity !== 0;
@@ -52,22 +53,28 @@ function ProductDetail() {
     if (quantity > option.quantity) setQuantity(option.quantity);
     setMaxQnt(option.quantity);
 
+    // check weather product has options/variant
+    if (Object.keys(option).length > 2) {
+      // setting the variant/options
+      Object.values(option).forEach((val, indx) => {
+        // indx !== 0 to make sure its not getting color,
+        // color is always the first element of the object
+        if (Array.isArray(val) && indx !== 0) {
+          setVariant({
+            name: Object.keys(option)[indx],
+            values: val
+          });
+        }
+      });
+      setNoVariant(false);
+    } else {
+      setNoVariant(true);
+    }
     // set variant (variant doesnt have a unique property in the given json, thus doing this)
-    Object.values(option).forEach((val, indx) => {
-      // indx !== 0 to make sure its not getting color,
-      // color is always the first element of the object
-      if (Array.isArray(val) && indx !== 0) {
-        setVariant({
-          name: Object.keys(option)[indx],
-          values: val
-        });
-      }
-    });
   };
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(variantOption);
-    setVariantOption(e.target.value);
+    setSelectedVariant(e.target.value);
   };
 
   const onIncrement = () => {
@@ -80,6 +87,26 @@ function ProductDetail() {
     if (canDecrement) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const renderOptions = () => {
+    if (noVariant) {
+      return (
+        <p className={classNames["empty-selection"]}>no options available</p>
+      );
+    }
+    if (variant && Object.keys(variant).length !== 0) {
+      return (
+        <RadioButtonGroup
+          name={variant.name}
+          options={variant.values}
+          onChange={handleOptionChange}
+        />
+      );
+    }
+    return (
+      <p className={classNames["empty-selection"]}>please select a color</p>
+    );
   };
 
   return (
@@ -117,21 +144,12 @@ function ProductDetail() {
                 onChange={handleColorChange}
               />
               <Divider />
-              {variant && Object.keys(variant).length !== 0 ? (
-                <RadioButtonGroup
-                  name={variant.name}
-                  options={variant.values}
-                  onChange={handleOptionChange}
-                />
-              ) : (
-                <p className={classNames["empty-selection"]}>
-                  please select a color
-                </p>
-              )}
-
+              {renderOptions()}
               <Divider />
               {/* <p className={classNames.warning}>3 items already in the cart</p> */}
-              {Object.keys(variant).length > 0 && !variantOption ? (
+              {!noVariant &&
+              Object.keys(variant).length > 0 &&
+              !selectedVariant ? (
                 <p className={classNames.danger}>
                   please select an option from above
                 </p>
@@ -159,7 +177,9 @@ function ProductDetail() {
                     variant="dark"
                     quantity={quantity.toString()}
                     onClick={() => {}}
-                    disabled={quantity === 0 || !variantOption}
+                    disabled={
+                      quantity === 0 || (!selectedVariant && !noVariant)
+                    }
                   />
                 )}
               </section>
