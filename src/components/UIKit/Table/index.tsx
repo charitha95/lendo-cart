@@ -4,6 +4,7 @@ import productImg from "../../../assets/images/ps4.png";
 import { Colors } from "../../../types";
 import Chip from "../Chip";
 import QuantityInput from "../QuantityInput";
+import { CloseButton } from "../Button";
 
 function Table() {
   const headers = ["Product", "Price", "Quantity", "Total", "Action"];
@@ -78,8 +79,10 @@ function Table() {
                 quantity={3}
               />
             </td>
-            <td>{item.price * item.quantity}</td>
-            <td>x</td>
+            <td className={classNames.total}>{item.price * item.quantity}</td>
+            <td>
+              <CloseButton />
+            </td>
           </tr>
         ))}
       </tbody>

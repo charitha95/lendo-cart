@@ -1,0 +1,8 @@
+@import "../../../../styles/placeholder";
+
+.close-btn {
+  @extend %btn;
+  padding: 10px 10px;
+  border-radius: 50%;
+
+}
