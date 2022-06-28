@@ -3,6 +3,8 @@ import classNames from "./style.module.scss";
 import productImg from "../../assets/images/ps4.png";
 import Card from "../../components/UIKit/Card";
 import Rating from "../../components/UIKit/Rating";
+import { RadioButtonGroup } from "../../components/UIKit/Button";
+import Divider from "../../components/UIKit/Divider";
 
 function ProductDetail() {
   return (
@@ -28,6 +30,11 @@ function ProductDetail() {
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation
             </p>
+            <Divider />
+            <RadioButtonGroup name="color" options={["black", "white"]} />
+            <Divider />
+            <RadioButtonGroup name="storage" options={["250", "500"]} />
+            <Divider />
           </Card>
         </div>
       </div>

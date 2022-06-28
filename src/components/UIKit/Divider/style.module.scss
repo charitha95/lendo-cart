@@ -1,0 +1,8 @@
+@import "../../../styles/variables";
+
+.divider {
+  border: 0;
+  border-top: 1px solid $border-divider;
+  margin-top: 17px;
+  margin-bottom: 15px;
+}

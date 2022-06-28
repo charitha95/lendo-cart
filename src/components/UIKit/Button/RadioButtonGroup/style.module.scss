@@ -1,0 +1,52 @@
+@import "../../../../styles/variables";
+
+.radio-group {
+
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+    color: $text-light-color;
+    font-family: $font-family-default;
+    margin-bottom: 12px;
+  }
+
+  label {
+    font-size: 15px;
+    font-weight: 700;
+    color: $text-color;
+    font-family: $font-family-default;
+    margin-right: 10px;
+  }
+
+  input[type="radio"]:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    top: -1px;
+    left: -1px;
+    position: relative;
+    background-color: #fff;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid $border-radio-button;
+  }
+
+  input[type="radio"]:checked:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    top: -1px;
+    left: -1px;
+    position: relative;
+    background-color: $primary-color;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid $border-radio-button;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+}
