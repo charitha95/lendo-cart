@@ -4,18 +4,16 @@ import classNames from "./style.module.scss";
 type RadioButtonGroupProps = {
   name: string;
   options: string[];
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-function RadioButtonGroup({ name, options }: RadioButtonGroupProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
-
+function RadioButtonGroup({ name, options, onChange }: RadioButtonGroupProps) {
   return (
-    <div onChange={handleRadioChange} className={classNames["radio-group"]}>
+    <div onChange={onChange} className={classNames["radio-group"]}>
       <p className={classNames.title}>{name}</p>
       {options.map((option) => (
         <label key={`${option}`}>
-          <input type="radio" value="Male" name={name} /> {option}
+          <input type="radio" value={option} name={name} /> {option}
         </label>
       ))}
     </div>

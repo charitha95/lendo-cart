@@ -1,8 +1,11 @@
+@import "../../../styles/variables";
+@import "../../../styles/placeholder";
+
 .circle {
-  background-color: #595e7d;
   border-radius: 50%;
   display: inline-block;
-
+  @extend %ease;
+  
   &.sm {
     height: 70px;
     width: 70px;
@@ -14,5 +17,22 @@
   &.lg {
     height: 520px;
     width: 520px;
+  }
+
+  &.black {
+    background-color: #595e7d;
+  }
+  &.white {
+    background-color: #efefef;
+    box-shadow: $box-shadow-light;
+  }
+  &.red {
+    background-color: #f45555;
+  }
+  &.orange {
+    background-color: #ffa566;
+  }
+  &.green {
+    background-color: #56efac;
   }
 }
