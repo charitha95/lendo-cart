@@ -45,6 +45,11 @@
       color: $text-tone-color;
       font-family: $font-family-default;
       display: flex;
+      align-items: center;
+      .weight {
+        margin-left: 18px;
+        margin-right: 3px;
+      }
     }
     .desc {
       padding-top: 44px;
@@ -67,7 +72,7 @@
       font-family: $font-family-default;
       margin-bottom: 12px;
     }
-    
+
     .action {
       display: flex;
       align-items: center;
