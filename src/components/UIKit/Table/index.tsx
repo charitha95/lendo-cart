@@ -1,13 +1,48 @@
+import ColorCircle from "../ColorCircle";
 import classNames from "./style.module.scss";
+import productImg from "../../../assets/images/ps4.png";
+import { Colors } from "../../../types";
+import Chip from "../Chip";
+import QuantityInput from "../QuantityInput";
 
 function Table() {
   const headers = ["Product", "Price", "Quantity", "Total", "Action"];
   const products = [
-    { name: "name here", price: 50, quantity: 5 },
-    { name: "name here looong", price: 540, quantity: 4 },
-    { name: "here its name", price: 550, quantity: 1 },
-    { name: "my name is", price: 10, quantity: 1 },
-    { name: "yes this is my name too long ", price: 75, quantity: 2 }
+    {
+      name: "PlayStation 4",
+      price: 50,
+      quantity: 5,
+      color: "white" as Colors,
+      variant: "500"
+    },
+    {
+      name: "JBL Marsk",
+      price: 540,
+      quantity: 4,
+      color: "green" as Colors,
+      variant: "150"
+    },
+    {
+      name: "SamSung TVC 43",
+      price: 10,
+      quantity: 1,
+      color: "red" as Colors,
+      variant: "250"
+    },
+    {
+      name: "Walter Bottles",
+      price: 550,
+      quantity: 1,
+      color: "black" as Colors,
+      variant: "150"
+    },
+    {
+      name: "Too good lol",
+      price: 75,
+      quantity: 2,
+      color: "red" as Colors,
+      variant: "75"
+    }
   ];
   return (
     <table className={classNames.table}>
@@ -21,9 +56,28 @@ function Table() {
       <tbody>
         {products.map((item) => (
           <tr key={item.name}>
-            <td>{item.name}</td>
+            <td className={classNames["product-info"]}>
+              <div className={classNames["img-section"]}>
+                <img src={productImg} alt="product" />
+                <ColorCircle size="sm" variant={item.color} />
+              </div>
+              <div className={classNames["misc-info"]}>
+                <p className={classNames.name}>{item.name}</p>
+                <section>
+                  <p>{item.color}</p>
+                  <Chip text={item.variant} variant="warning" />
+                </section>
+              </div>
+            </td>
             <td>{item.price}</td>
-            <td>{item.quantity}</td>
+            <td>
+              <QuantityInput
+                maxQnt={0}
+                onDecrement={() => {}}
+                onIncrement={() => {}}
+                quantity={3}
+              />
+            </td>
             <td>{item.price * item.quantity}</td>
             <td>x</td>
           </tr>

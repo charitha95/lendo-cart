@@ -1,9 +1,50 @@
+@import "../../../styles/variables";
+
 .table {
   width: 100%;
   thead {
     text-align: left;
   }
-  td, th {
-    padding: 15px;
+
+  td,
+  th {
+    padding: 32px 15px;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .name {
+    font-size: 18px;
+    font-family: $font-family-title;
+    color: $text-dark-color;
+    font-weight: 600;
+  }
+
+  .misc-info {
+    display: flex;
+    flex-direction: column;
+    section {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      p {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .img-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 45px;
+    img {
+      position: absolute;
+      max-width: 70px;
+    }
   }
 }

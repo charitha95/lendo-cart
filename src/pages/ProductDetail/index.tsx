@@ -49,12 +49,12 @@ function ProductDetail() {
     setMaxQnt(option.quantity);
 
     // set variant (variant doesnt have a unique property in the given json, thus doing this)
-    Object.values(option).forEach((val, ind) => {
-      // ind !== 0 to make sure its not getting color,
+    Object.values(option).forEach((val, indx) => {
+      // indx !== 0 to make sure its not getting color,
       // color is always the first element of the object
-      if (Array.isArray(val) && ind !== 0) {
+      if (Array.isArray(val) && indx !== 0) {
         setVariant({
-          name: Object.keys(option)[ind],
+          name: Object.keys(option)[indx],
           values: val
         });
       }
