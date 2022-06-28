@@ -5,10 +5,17 @@ type PrimaryButtonProps = {
   text: string;
   icon: string;
   variant: "light" | "dark";
+  quantity: string;
   onClick: () => void;
 };
 
-function PrimaryButton({ text, icon, variant, onClick }: PrimaryButtonProps) {
+function PrimaryButton({
+  text,
+  icon,
+  variant,
+  quantity,
+  onClick
+}: PrimaryButtonProps) {
   return (
     <button
       type="button"
@@ -17,7 +24,7 @@ function PrimaryButton({ text, icon, variant, onClick }: PrimaryButtonProps) {
     >
       <img src={icon} alt="cart" />
       {text}
-      <Bubble text="5" variant={variant === "light" ? "red" : "white"} />
+      <Bubble text={quantity} variant={variant === "light" ? "red" : "white"} />
     </button>
   );
 }

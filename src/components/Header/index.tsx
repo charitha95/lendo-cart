@@ -22,6 +22,7 @@ function Header() {
               text="5600kr"
               icon={cartIcon}
               variant="light"
+              quantity="5"
               onClick={handleCartClick}
             />
           </div>

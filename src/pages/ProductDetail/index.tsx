@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { RadioButtonGroup } from "../../components/UIKit/Button";
+import { PrimaryButton, RadioButtonGroup } from "../../components/UIKit/Button";
+import { Colors } from "../../types";
 import ColorCircle from "../../components/UIKit/ColorCircle";
 import classNames from "./style.module.scss";
 import productImg from "../../assets/images/ps4.png";
 import Card from "../../components/UIKit/Card";
 import Rating from "../../components/UIKit/Rating";
 import Divider from "../../components/UIKit/Divider";
-import { Colors } from "../../types";
 import QuantityInput from "../../components/UIKit/QuantityInput";
+import addToCartIcon from "../../assets/icons/cart-add-light.svg";
 
 function ProductDetail() {
   const [circleColor, setCircleColor] = useState("black" as Colors);
@@ -58,7 +59,7 @@ function ProductDetail() {
             <Divider />
             <RadioButtonGroup
               name="color"
-              options={["black", "white", "red", "orange", "green"]}
+              options={["black", "white"]}
               onChange={handleColorChange}
             />
             <Divider />
@@ -68,12 +69,25 @@ function ProductDetail() {
               onChange={() => {}}
             />
             <Divider />
-            <QuantityInput
-              maxQnt={4}
-              onDecrement={onDecrement}
-              onIncrement={onIncrement}
-              quantity={quantity}
-            />
+            <p className={classNames.warning}>3 items already in the cart</p>
+            <section className={classNames.action}>
+              <div className={classNames.total}>
+                <QuantityInput
+                  maxQnt={4}
+                  onDecrement={onDecrement}
+                  onIncrement={onIncrement}
+                  quantity={quantity}
+                />
+                <p>400kr</p>
+              </div>
+              <PrimaryButton
+                text="Add to cart"
+                icon={addToCartIcon}
+                variant="dark"
+                quantity={quantity.toString()}
+                onClick={() => {}}
+              />
+            </section>
           </Card>
         </div>
       </div>

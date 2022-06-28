@@ -45,7 +45,6 @@
       color: $text-tone-color;
       font-family: $font-family-default;
       display: flex;
-      
     }
     .desc {
       padding-top: 44px;
@@ -53,6 +52,28 @@
       color: $text-color;
       font-family: $font-family-default;
       line-height: 1.5;
+    }
+
+    .warning {
+      color: $warn-color;
+      font-size: 12px;
+    }
+
+    .action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .total {
+        display: flex;
+        align-items: center;
+        p {
+          margin-left: 14px;
+          font-size: 15px;
+          font-weight: 700;
+          color: $text-color;
+          font-family: $font-family-default;
+        }
+      }
     }
   }
 }
