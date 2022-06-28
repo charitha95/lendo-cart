@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Banner from "../../components/Banner";
 import ProductCard from "../../components/ProductCard";
 import classNames from "./style.module.scss";
@@ -9,22 +10,26 @@ function Home() {
       <Banner />
       <div className={`${classNames["product-list"]} grid`}>
         <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <ProductCard
-            brand="Philips"
-            image={prodImage}
-            name="Philips hue bulb"
-            price="290kr"
-            onClick={() => {}}
-          />
+          <Link to="/detail/1">
+            <ProductCard
+              brand="Philips"
+              image={prodImage}
+              name="Philips hue bulb"
+              price="290kr"
+              onClick={() => {}}
+            />
+          </Link>
         </div>
         <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <ProductCard
-            brand="Philips"
-            image={prodImage}
-            name="Philips hue bulb"
-            price="290kr"
-            onClick={() => {}}
-          />
+          <Link to="/detail/2">
+            <ProductCard
+              brand="Philips"
+              image={prodImage}
+              name="Philips hue bulb"
+              price="290kr"
+              onClick={() => {}}
+            />
+          </Link>
         </div>
         <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
           <ProductCard
