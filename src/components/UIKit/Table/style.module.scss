@@ -6,6 +6,14 @@
     text-align: left;
   }
 
+  thead,
+  tbody {
+    border: 0;
+    border-bottom: 1px solid $border-divider;
+    margin-top: 17px;
+    margin-bottom: 15px;
+  }
+
   td,
   th {
     padding: 32px 15px;
@@ -39,7 +47,6 @@
   .total {
     font-weight: 600;
     font-family: $font-family-title;
-
   }
 
   .img-section {

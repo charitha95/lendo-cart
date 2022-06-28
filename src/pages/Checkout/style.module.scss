@@ -7,4 +7,24 @@
     margin-bottom: 40px;
     margin-left: 18px;
   }
+
+  section {
+    margin-top: 60px;
+    float: right;
+    display: flex;
+    align-items: center;
+    .text {
+      font-size: 18px;
+      font-family: $font-family-title;
+      color: $text-tone-color;
+      margin-right: 25px;
+    }
+    .sub {
+      font-size: 18px;
+      font-family: $font-family-title;
+      color: $text-dark-color;
+      font-weight: 600;
+      margin-right: 25px;
+    }
+  }
 }
