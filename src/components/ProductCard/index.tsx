@@ -2,6 +2,7 @@ import Card from "../UIKit/Card";
 import classNames from "./style.module.scss";
 import arrowIcon from "../../assets/icons/arrow-light.svg";
 import { SecondaryButton } from "../UIKit/Button";
+import formatCurrency from "../../helpers/formatCurrency";
 
 type ProductCardProps = {
   image: string;
@@ -20,7 +21,7 @@ function ProductCard({ image, name, price, brand, onClick }: ProductCardProps) {
       <div className={classNames["hover-card"]}>
         <section className={classNames.info}>
           <p className={classNames.name}>{name}</p>
-          <p className={classNames.price}>{price}</p>
+          <p className={classNames.price}>{formatCurrency(price)}</p>
         </section>
         <section className={classNames.action}>
           <p className={classNames.brand}>{brand}</p>

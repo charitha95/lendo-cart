@@ -15,7 +15,7 @@ function Home() {
               brand="Philips"
               image={prodImage}
               name="Philips hue bulb"
-              price="290kr"
+              price="290"
               onClick={() => {}}
             />
           </Link>
@@ -26,7 +26,7 @@ function Home() {
               brand="Philips"
               image={prodImage}
               name="Philips hue bulb"
-              price="290kr"
+              price="290"
               onClick={() => {}}
             />
           </Link>
@@ -36,7 +36,7 @@ function Home() {
             brand="Philips"
             image={prodImage}
             name="Philips hue bulb"
-            price="290kr"
+            price="290"
             onClick={() => {}}
           />
         </div>
@@ -45,7 +45,7 @@ function Home() {
             brand="Philips"
             image={prodImage}
             name="Philips hue bulb"
-            price="290kr"
+            price="290"
             onClick={() => {}}
           />
         </div>
@@ -54,7 +54,7 @@ function Home() {
             brand="Philips"
             image={prodImage}
             name="Philips hue bulb"
-            price="290kr"
+            price="290"
             onClick={() => {}}
           />
         </div>
@@ -63,7 +63,7 @@ function Home() {
             brand="Philips"
             image={prodImage}
             name="Philips hue bulb"
-            price="290kr"
+            price="290"
             onClick={() => {}}
           />
         </div>
@@ -72,7 +72,7 @@ function Home() {
             brand="Philips"
             image={prodImage}
             name="Philips hue bulb"
-            price="290kr"
+            price="290"
             onClick={() => {}}
           />
         </div>
