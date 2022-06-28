@@ -7,15 +7,15 @@ import ProductDetail from "./pages/ProductDetail";
 function App() {
   return (
     <div>
-      <Header />
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Header />
+        <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/detail/:id" element={<ProductDetail />} />
           </Routes>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </div>
   );
 }

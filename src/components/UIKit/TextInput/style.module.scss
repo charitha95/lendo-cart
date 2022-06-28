@@ -4,12 +4,14 @@
   background: #fff;
   border-radius: $border-radius-p-btn;
   overflow: hidden;
-  padding: 14px 21px;
+  padding: 13px 21px;
   display: flex;
   align-items: center;
+  max-height: 45px;
   input {
     height: 100%;
     border: none;
+    padding: 0;
     &:focus {
       outline: none;
     }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PrimaryButton } from "../UIKit/Button";
 import Container from "../UIKit/Container";
 import classNames from "./style.module.scss";
@@ -12,7 +13,9 @@ function Header() {
     <div className={classNames.header}>
       <Container>
         <div className={classNames.content}>
-          <img src={logo} alt="lendo cart" />
+          <Link to="/">
+            <img src={logo} alt="lendo cart" />
+          </Link>
           <div className={classNames.actions}>
             <Search />
             <PrimaryButton
