@@ -1,0 +1,18 @@
+.circle {
+  background-color: #595e7d;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.sm {
+    height: 70px;
+    width: 70px;
+  }
+  &.md {
+    height: 120px;
+    width: 120px;
+  }
+  &.lg {
+    height: 520px;
+    width: 520px;
+  }
+}
