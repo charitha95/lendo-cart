@@ -6,6 +6,7 @@ type PrimaryButtonProps = {
   icon: string;
   variant: "light" | "dark";
   quantity: string;
+  disabled?: boolean;
   onClick: () => void;
 };
 
@@ -14,6 +15,7 @@ function PrimaryButton({
   icon,
   variant,
   quantity,
+  disabled = false,
   onClick
 }: PrimaryButtonProps) {
   return (
@@ -21,6 +23,7 @@ function PrimaryButton({
       type="button"
       className={`${classNames[variant]} ${classNames["primary-btn"]}`}
       onClick={onClick}
+      disabled={disabled}
     >
       <img src={icon} alt="cart" />
       {text}

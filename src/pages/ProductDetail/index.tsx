@@ -24,6 +24,7 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(0);
   const [maxQnt, setMaxQnt] = useState(0);
   const [variant, setVariant] = useState({} as Variant);
+  const [variantOption, setVariantOption] = useState("");
   const [product, setProduct] = useState({} as Product);
 
   const canDecrement = quantity !== 0;
@@ -39,9 +40,11 @@ function ProductDetail() {
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // set color
-    const option = product.options.filter(
-      (i: any) => i.color === e.target.value
-    )[0];
+    const option = product.options.filter((i: any) => {
+      // sometimes color placed inside of an array
+      if (Array.isArray(i.color)) return i.color[0] === e.target.value;
+      return i.color === e.target.value;
+    })[0];
     setColor(e.target.value as Colors);
 
     // set quantity
@@ -62,8 +65,10 @@ function ProductDetail() {
     });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(variantOption);
+    setVariantOption(e.target.value);
+  };
 
   const onIncrement = () => {
     if (canIncrement) {
@@ -125,7 +130,12 @@ function ProductDetail() {
               )}
 
               <Divider />
-              <p className={classNames.warning}>3 items already in the cart</p>
+              {/* <p className={classNames.warning}>3 items already in the cart</p> */}
+              {Object.keys(variant).length > 0 && !variantOption ? (
+                <p className={classNames.danger}>
+                  please select an option from above
+                </p>
+              ) : null}
               <section className={classNames.action}>
                 <div className={classNames.total}>
                   <QuantityInput
@@ -134,7 +144,9 @@ function ProductDetail() {
                     onIncrement={onIncrement}
                     quantity={quantity}
                   />
-                  <p>400kr</p>
+                  <p>
+                    {formatCurrency((quantity * +product.price).toString())}
+                  </p>
                 </div>
                 {!product.available ? (
                   <p className={classNames.error}>
@@ -147,6 +159,7 @@ function ProductDetail() {
                     variant="dark"
                     quantity={quantity.toString()}
                     onClick={() => {}}
+                    disabled={quantity === 0 || !variantOption}
                   />
                 )}
               </section>
