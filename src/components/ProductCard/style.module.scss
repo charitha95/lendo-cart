@@ -34,18 +34,24 @@
   display: flex;
   justify-content: space-between;
   padding-top: 50px;
+  align-items: center;
   .name {
     font-size: 18px;
     font-weight: 500;
     color: $title-color;
     font-family: $font-family-title;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .price {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 800;
     color: $text-dark-color;
     font-family: $font-family-default;
+    margin-left: 5px;
   }
 }
 

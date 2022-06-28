@@ -2,80 +2,30 @@ import { Link } from "react-router-dom";
 import Banner from "../../components/Banner";
 import ProductCard from "../../components/ProductCard";
 import classNames from "./style.module.scss";
-import prodImage from "../../assets/images/ps4.png";
+import data from "../../data/products.json";
 
 function Home() {
   return (
     <>
       <Banner />
       <div className={`${classNames["product-list"]} grid`}>
-        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <Link to="/detail/1">
-            <ProductCard
-              brand="Philips"
-              image={prodImage}
-              name="Philips hue bulb"
-              price="290"
-              onClick={() => {}}
-            />
-          </Link>
-        </div>
-        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <Link to="/detail/2">
-            <ProductCard
-              brand="Philips"
-              image={prodImage}
-              name="Philips hue bulb"
-              price="290"
-              onClick={() => {}}
-            />
-          </Link>
-        </div>
-        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <ProductCard
-            brand="Philips"
-            image={prodImage}
-            name="Philips hue bulb"
-            price="290"
-            onClick={() => {}}
-          />
-        </div>
-        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <ProductCard
-            brand="Philips"
-            image={prodImage}
-            name="Philips hue bulb"
-            price="290"
-            onClick={() => {}}
-          />
-        </div>
-        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <ProductCard
-            brand="Philips"
-            image={prodImage}
-            name="Philips hue bulb"
-            price="290"
-            onClick={() => {}}
-          />
-        </div>
-        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <ProductCard
-            brand="Philips"
-            image={prodImage}
-            name="Philips hue bulb"
-            price="290"
-            onClick={() => {}}
-          />
-        </div>
-        <div className={`${classNames["prod-card"]} col-12 col-md-3`}>
-          <ProductCard
-            brand="Philips"
-            image={prodImage}
-            name="Philips hue bulb"
-            price="290"
-            onClick={() => {}}
-          />
-        </div>
+        {data.items.map((product) => {
+          return (
+            <div
+              className={`${classNames["prod-card"]} col-12 col-md-3`}
+              key={product.id}
+            >
+              <Link to={`/detail/${product.id}`}>
+                <ProductCard
+                  brand={product.brand}
+                  image={product.imgUrl}
+                  name={product.name}
+                  price={product.price}
+                />
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </>
   );

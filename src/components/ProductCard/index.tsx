@@ -9,10 +9,9 @@ type ProductCardProps = {
   name: string;
   price: string;
   brand: string;
-  onClick: () => void;
 };
 
-function ProductCard({ image, name, price, brand, onClick }: ProductCardProps) {
+function ProductCard({ image, name, price, brand }: ProductCardProps) {
   return (
     <div className={classNames["product-wrapper"]}>
       <Card variant="light" classes={classNames["product-card"]}>
@@ -29,7 +28,7 @@ function ProductCard({ image, name, price, brand, onClick }: ProductCardProps) {
             icon={arrowIcon}
             variant="dark"
             text="View"
-            onClick={onClick}
+            onClick={() => {}}
             classes={classNames["action-btn"]}
           />
         </section>
