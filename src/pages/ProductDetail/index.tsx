@@ -39,14 +39,19 @@ function ProductDetail() {
   };
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // set color
     const option = product.options.filter((i) => i.color === e.target.value)[0];
-    // if newer option has less qnty than previously selected option
-    if (quantity > option.quantity) setQuantity(option.quantity);
-    // set option's value
-    setMaxQnt(option.quantity);
     setColor(e.target.value as Colors);
 
+    // set quantity
+    // if newer option has less qnty than previously selected option
+    if (quantity > option.quantity) setQuantity(option.quantity);
+    setMaxQnt(option.quantity);
+
+    // set variant (variant doesnt have a unique property in the given json, thus doing this)
     Object.values(option).forEach((val, ind) => {
+      // ind !== 0 to make sure its not getting color,
+      // color is always the first element of the object
       if (Array.isArray(val) && ind !== 0) {
         setVariant({
           name: Object.keys(option)[ind],
