@@ -60,6 +60,14 @@
       margin-bottom: 12px;
     }
 
+    .empty-selection {
+      font-size: 14px;
+      font-weight: 500;
+      color: $text-light-color;
+      font-family: $font-family-default;
+      margin-bottom: 12px;
+    }
+    
     .action {
       display: flex;
       align-items: center;

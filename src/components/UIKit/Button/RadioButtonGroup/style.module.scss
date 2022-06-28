@@ -1,7 +1,6 @@
 @import "../../../../styles/variables";
 
 .radio-group {
-
   .title {
     font-size: 14px;
     font-weight: 500;
@@ -16,6 +15,7 @@
     color: $text-color;
     font-family: $font-family-default;
     margin-right: 10px;
+    cursor: pointer;
   }
 
   input[type="radio"]:after {
@@ -48,5 +48,6 @@
 
   input[type="radio"] {
     margin-right: 5px;
+    cursor: pointer;
   }
 }

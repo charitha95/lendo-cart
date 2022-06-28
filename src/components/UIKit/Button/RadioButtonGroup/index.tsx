@@ -3,7 +3,7 @@ import classNames from "./style.module.scss";
 
 type RadioButtonGroupProps = {
   name: string;
-  options: string[];
+  options: string[] | number[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 

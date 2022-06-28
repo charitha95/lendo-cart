@@ -11,17 +11,53 @@ import QuantityInput from "../../components/UIKit/QuantityInput";
 import addToCartIcon from "../../assets/icons/cart-add-light.svg";
 import errorIcon from "../../assets/icons/error.svg";
 
+type Variant = {
+  name: string;
+  values: string[] | number[];
+};
+
 function ProductDetail() {
-  const [circleColor, setCircleColor] = useState("black" as Colors);
+  const [color, setColor] = useState("black" as Colors);
   const [quantity, setQuantity] = useState(0);
-  const maxQnt = 4;
-  const error = true;
+  const [variant, setVariant] = useState({} as Variant);
+  const [maxQnt, setMaxQnt] = useState(0);
+  const error = false;
   const canDecrement = quantity !== 0;
   const canIncrement = quantity < maxQnt;
 
-  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCircleColor(e.target.value as Colors);
+  const product = {
+    id: 1,
+    name: "Philips hue bulb",
+    brand: "Philips",
+    price: "500",
+    available: true,
+    weight: 0.2,
+    options: [
+      { color: "white", power: [6.5, 9.5], quantity: 3 },
+      { color: "red", power: [6.5, 11.5], quantity: 7 }
+    ]
   };
+
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const option = product.options.filter((i) => i.color === e.target.value)[0];
+    // if newer option has less qnty than previously selected option
+    if (quantity > option.quantity) setQuantity(option.quantity);
+    // set option's value
+    setMaxQnt(option.quantity);
+    setColor(e.target.value as Colors);
+
+    Object.values(option).forEach((val, ind) => {
+      if (Array.isArray(val) && ind !== 0) {
+        setVariant({
+          name: Object.keys(option)[ind],
+          values: val
+        });
+      }
+    });
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
 
   const onIncrement = () => {
     if (canIncrement) {
@@ -40,7 +76,7 @@ function ProductDetail() {
       <div className="grid">
         <div className={`${classNames["img-section"]} col-12 col-md-6`}>
           <img src={productImg} alt="product" />
-          <ColorCircle size="lg" variant={circleColor} />
+          <ColorCircle size="lg" variant={color} />
         </div>
         <div className={`${classNames["info-section"]} col-12 col-md-6`}>
           <Card variant="light" classes="padding-45">
@@ -61,21 +97,29 @@ function ProductDetail() {
             <Divider />
             <RadioButtonGroup
               name="color"
-              options={["black", "white"]}
+              options={product.options.map((i) => i.color)}
               onChange={handleColorChange}
             />
             <Divider />
-            <RadioButtonGroup
-              name="storage"
-              options={["250", "500"]}
-              onChange={() => {}}
-            />
+            {variant && // 👈 null and undefined check
+            Object.keys(variant).length !== 0 ? (
+              <RadioButtonGroup
+                name={variant.name}
+                options={variant.values}
+                onChange={handleOptionChange}
+              />
+            ) : (
+              <p className={classNames["empty-selection"]}>
+                please select a color
+              </p>
+            )}
+
             <Divider />
             <p className={classNames.warning}>3 items already in the cart</p>
             <section className={classNames.action}>
               <div className={classNames.total}>
                 <QuantityInput
-                  maxQnt={4}
+                  maxQnt={maxQnt}
                   onDecrement={onDecrement}
                   onIncrement={onIncrement}
                   quantity={quantity}
