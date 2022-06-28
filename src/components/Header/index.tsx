@@ -18,13 +18,15 @@ function Header() {
           </Link>
           <div className={classNames.actions}>
             <Search />
-            <PrimaryButton
-              text="5600kr"
-              icon={cartIcon}
-              variant="light"
-              quantity="5"
-              onClick={handleCartClick}
-            />
+            <Link to="/cart">
+              <PrimaryButton
+                text="5600kr"
+                icon={cartIcon}
+                variant="light"
+                quantity="5"
+                onClick={handleCartClick}
+              />
+            </Link>
           </div>
         </div>
       </Container>

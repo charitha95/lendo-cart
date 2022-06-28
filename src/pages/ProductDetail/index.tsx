@@ -9,11 +9,13 @@ import Rating from "../../components/UIKit/Rating";
 import Divider from "../../components/UIKit/Divider";
 import QuantityInput from "../../components/UIKit/QuantityInput";
 import addToCartIcon from "../../assets/icons/cart-add-light.svg";
+import errorIcon from "../../assets/icons/error.svg";
 
 function ProductDetail() {
   const [circleColor, setCircleColor] = useState("black" as Colors);
   const [quantity, setQuantity] = useState(0);
   const maxQnt = 4;
+  const error = true;
   const canDecrement = quantity !== 0;
   const canIncrement = quantity < maxQnt;
 
@@ -80,13 +82,19 @@ function ProductDetail() {
                 />
                 <p>400kr</p>
               </div>
-              <PrimaryButton
-                text="Add to cart"
-                icon={addToCartIcon}
-                variant="dark"
-                quantity={quantity.toString()}
-                onClick={() => {}}
-              />
+              {error ? (
+                <p className={classNames.error}>
+                  <img src={errorIcon} alt="error" /> Sorry! out of stock
+                </p>
+              ) : (
+                <PrimaryButton
+                  text="Add to cart"
+                  icon={addToCartIcon}
+                  variant="dark"
+                  quantity={quantity.toString()}
+                  onClick={() => {}}
+                />
+              )}
             </section>
           </Card>
         </div>

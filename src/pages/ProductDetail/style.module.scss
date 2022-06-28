@@ -57,6 +57,7 @@
     .warning {
       color: $warn-color;
       font-size: 12px;
+      margin-bottom: 12px;
     }
 
     .action {
@@ -72,6 +73,16 @@
           font-weight: 700;
           color: $text-color;
           font-family: $font-family-default;
+        }
+      }
+      .error {
+        font-size: 16px;
+        color: $text-light-color;
+        font-family: $font-family-default;
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 5px;
         }
       }
     }
