@@ -1,3 +1,58 @@
+@import "../../styles/variables";
+
 .detail-wrapper {
   padding-top: 50px;
+  .img-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    img {
+      position: absolute;
+      max-width: 450px;
+    }
+  }
+
+  .info-section {
+    .brand {
+      font-size: 18px;
+      font-weight: 200;
+      color: $text-tone-color;
+      font-family: $font-family-default;
+    }
+    .block {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .name {
+      font-size: 32px;
+      font-weight: 500;
+      color: $title-color;
+      font-family: $font-family-title;
+    }
+    .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: $primary-color;
+      font-family: $font-family-default;
+    }
+
+    .review {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: $text-tone-color;
+      font-family: $font-family-default;
+      display: flex;
+      
+    }
+    .desc {
+      padding-top: 44px;
+      font-weight: 500;
+      color: $text-color;
+      font-family: $font-family-default;
+      line-height: 1.5;
+    }
+  }
 }
