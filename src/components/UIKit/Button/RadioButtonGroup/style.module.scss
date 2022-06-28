@@ -29,7 +29,7 @@
     content: "";
     display: inline-block;
     visibility: visible;
-    border: 2px solid $border-radio-button;
+    border: 2px solid $border-color;
   }
 
   input[type="radio"]:checked:after {
@@ -43,7 +43,7 @@
     content: "";
     display: inline-block;
     visibility: visible;
-    border: 2px solid $border-radio-button;
+    border: 2px solid $border-color;
   }
 
   input[type="radio"] {

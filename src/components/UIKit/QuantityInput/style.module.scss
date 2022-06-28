@@ -1,0 +1,28 @@
+@import "../../../styles/variables";
+
+.quantity {
+  button {
+    width: 24px;
+    height: 24px;
+    border: 1px solid $border-color;
+    line-height: 1;
+    font-size: 16px;
+    font-family: Nunito;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 8px;
+    color: $text-light-color;
+  }
+  button:disabled,
+  button[disabled] {
+    background-color: #e7eaec;
+    cursor: not-allowed;
+  }
+  span {
+    margin: 0 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: $text-color;
+    font-family: $font-family-default;
+  }
+}

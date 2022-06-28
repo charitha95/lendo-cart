@@ -7,12 +7,29 @@ import Card from "../../components/UIKit/Card";
 import Rating from "../../components/UIKit/Rating";
 import Divider from "../../components/UIKit/Divider";
 import { Colors } from "../../types";
+import QuantityInput from "../../components/UIKit/QuantityInput";
 
 function ProductDetail() {
   const [circleColor, setCircleColor] = useState("black" as Colors);
+  const [quantity, setQuantity] = useState(0);
+  const maxQnt = 4;
+  const canDecrement = quantity !== 0;
+  const canIncrement = quantity < maxQnt;
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCircleColor(e.target.value as Colors);
+  };
+
+  const onIncrement = () => {
+    if (canIncrement) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const onDecrement = () => {
+    if (canDecrement) {
+      setQuantity(quantity - 1);
+    }
   };
 
   return (
@@ -51,6 +68,12 @@ function ProductDetail() {
               onChange={() => {}}
             />
             <Divider />
+            <QuantityInput
+              maxQnt={4}
+              onDecrement={onDecrement}
+              onIncrement={onIncrement}
+              quantity={quantity}
+            />
           </Card>
         </div>
       </div>
