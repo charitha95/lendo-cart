@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import CartProvider from "./contexts/CartContext";
 import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/detail/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Checkout />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
       </BrowserRouter>
