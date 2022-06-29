@@ -17,9 +17,9 @@ export type CartContextType = {
   getCartItemById: (id: number) => CartItem[];
   getCartQuantity: () => number;
   getTotal: () => number;
-  removeCartItem: (id: number, varian: string) => void;
-  increaseQuantity: (id: number, varian: string) => void;
-  decreaseQuantity: (id: number, varian: string) => void;
+  removeCartItem: (id: number, varian: string, color: Colors) => void;
+  increaseQuantity: (id: number, varian: string, color: Colors) => void;
+  decreaseQuantity: (id: number, varian: string, color: Colors) => void;
 };
 
 export type CartItem = {

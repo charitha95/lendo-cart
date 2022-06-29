@@ -16,4 +16,18 @@
     right: 0px;
     top: -20px;
   }
+
+  .back {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 45px;
+    margin-left: 20px;
+    background-color: transparent;
+    border: none;
+    img {
+      margin-right: 15px;
+      transform: scaleX(-1);
+    }
+  }
 }

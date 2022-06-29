@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 .checkout-wrapper {
-  padding-top: 50px;
+  padding-top: 10px;
   margin-bottom: 50px;
   h2 {
     margin-bottom: 40px;
@@ -26,5 +26,10 @@
       font-weight: 600;
       margin-right: 25px;
     }
+  }
+  .action {
+    display: flex;
+    justify-content: center;
+    float: none;
   }
 }

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { CartContextType, CartItem } from "../types";
+import { CartContextType, CartItem, Colors } from "../types";
 import data from "../data/products.json";
 
 type CartProviderProps = {
@@ -39,16 +39,20 @@ function CartProvider({ children }: CartProviderProps) {
     }, 0);
   };
 
-  const removeCartItem = (id: number, variant: string) => {
-    const items = cartItems.filter(
-      (item) => item.id !== id && item.variant !== variant
-    );
-    setCartItems(items);
+  const removeCartItem = (id: number, variant: string, color: Colors) => {
+    const otherItems = cartItems.filter((item) => item.id !== id);
+    let sameItems = cartItems.filter((item) => item.id === id);
+    if (variant) {
+      sameItems = sameItems.filter((item) => item.variant !== variant);
+    } else {
+      sameItems = sameItems.filter((item) => item.color !== color);
+    }
+    setCartItems([...otherItems, ...sameItems]);
   };
 
-  const increaseQuantity = (id: number, variant: string) => {
+  const increaseQuantity = (id: number, variant: string, color: Colors) => {
     const items = cartItems.map((item) => {
-      if (item.id === id && item.variant === variant) {
+      if (item.id === id && item.variant === variant && color === item.color) {
         item.quantity += 1;
         return item;
       }
@@ -57,9 +61,9 @@ function CartProvider({ children }: CartProviderProps) {
     setCartItems(items);
   };
 
-  const decreaseQuantity = (id: number, variant: string) => {
+  const decreaseQuantity = (id: number, variant: string, color: Colors) => {
     const items = cartItems.map((item) => {
-      if (item.id === id && item.variant === variant) {
+      if (item.id === id && item.variant === variant && color === item.color) {
         item.quantity -= 1;
         return item;
       }
