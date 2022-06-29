@@ -1,6 +1,7 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode } from "react";
 import { CartContextType, CartItem, Colors } from "../types";
 import data from "../data/products.json";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 type CartProviderProps = {
   children: ReactNode;
@@ -9,7 +10,10 @@ type CartProviderProps = {
 export const CartContext = createContext({} as CartContextType);
 
 function CartProvider({ children }: CartProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    "shopping-cart",
+    []
+  );
 
   const sortItems = (items: CartItem[]) => {
     return items.sort(
