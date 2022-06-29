@@ -118,9 +118,13 @@ function ProductDetail() {
   const handleAddToCart = () => {
     addToCart({
       color,
-      id: product.id,
       quantity,
-      variant: selectedVariant
+      maxQnt,
+      id: product.id,
+      variant: selectedVariant,
+      name: product.name,
+      price: product.price,
+      optionName: variant.name
     });
   };
 

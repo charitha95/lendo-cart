@@ -18,8 +18,8 @@ export type CartContextType = {
   getCartQuantity: () => number;
   getTotal: () => number;
   removeCartItem: (id: number, varian: string) => void;
-  // increaseQuantity: () => void;
-  // decreaseQuantity: () => void;
+  increaseQuantity: (id: number, varian: string) => void;
+  decreaseQuantity: (id: number, varian: string) => void;
 };
 
 export type CartItem = {
@@ -27,13 +27,8 @@ export type CartItem = {
   quantity: number;
   color: Colors;
   variant: number | string;
-};
-
-export type TableItem = {
-  id: number;
-  quantity: number;
-  color: Colors;
-  variant: number | string;
+  optionName: string;
   price: string;
   name: string;
+  maxQnt: number;
 };

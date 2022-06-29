@@ -46,6 +46,28 @@ function CartProvider({ children }: CartProviderProps) {
     setCartItems(items);
   };
 
+  const increaseQuantity = (id: number, variant: string) => {
+    const items = cartItems.map((item) => {
+      if (item.id === id && item.variant === variant) {
+        item.quantity += 1;
+        return item;
+      }
+      return item;
+    });
+    setCartItems(items);
+  };
+
+  const decreaseQuantity = (id: number, variant: string) => {
+    const items = cartItems.map((item) => {
+      if (item.id === id && item.variant === variant) {
+        item.quantity -= 1;
+        return item;
+      }
+      return item;
+    });
+    setCartItems(items);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -54,7 +76,9 @@ function CartProvider({ children }: CartProviderProps) {
         getCartItemById,
         getCartQuantity,
         getTotal,
-        removeCartItem
+        removeCartItem,
+        increaseQuantity,
+        decreaseQuantity
       }}
     >
       {children}
