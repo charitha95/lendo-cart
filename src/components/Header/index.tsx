@@ -6,9 +6,11 @@ import cartIcon from "../../assets/icons/cart-outline.svg";
 import logo from "../../assets/branding/logo.svg";
 import Search from "../Search";
 import useCart from "../../hooks/useCart";
+import formatCurrency from "../../helpers/formatCurrency";
 
 function Header() {
-  const { getCartQuantity } = useCart();
+  const { getCartQuantity, getTotal } = useCart();
+
   return (
     <div className={classNames.header}>
       <Container>
@@ -20,7 +22,7 @@ function Header() {
             <Search />
             <Link to="/cart">
               <PrimaryButton
-                text="5600kr"
+                text={formatCurrency(getTotal().toString())}
                 icon={cartIcon}
                 variant="light"
                 quantity={getCartQuantity().toString()}
