@@ -9,9 +9,10 @@ import QuantityInput from "../QuantityInput";
 type TableProps = {
   headers: string[];
   tableItems: TableItem[];
+  removeItem: (id: number, variant: string) => void;
 };
 
-function Table({ headers, tableItems }: TableProps) {
+function Table({ headers, tableItems, removeItem }: TableProps) {
   return (
     <table className={classNames.table}>
       <thead>
@@ -48,7 +49,9 @@ function Table({ headers, tableItems }: TableProps) {
             </td>
             <td className={classNames.total}>{+item.price * item.quantity}</td>
             <td>
-              <CloseButton />
+              <CloseButton
+                onClick={() => removeItem(item.id, item.variant.toString())}
+              />
             </td>
           </tr>
         ))}

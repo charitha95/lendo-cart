@@ -1,9 +1,13 @@
 import crossIcon from "../../../../assets/icons/cross.svg";
 import classNames from "./style.module.scss";
 
-function CloseButton() {
+type CloseButtonProps = {
+  onClick: () => void;
+};
+
+function CloseButton({ onClick }: CloseButtonProps) {
   return (
-    <button type="button" className={classNames["close-btn"]}>
+    <button type="button" className={classNames["close-btn"]} onClick={onClick}>
       <img src={crossIcon} alt="close" />
     </button>
   );

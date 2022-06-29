@@ -10,7 +10,7 @@ import formatCurrency from "../../helpers/formatCurrency";
 import data from "../../data/products.json";
 
 function Checkout() {
-  const { getCartItems, getTotal, getCartQuantity } = useCart();
+  const { getCartItems, getTotal, getCartQuantity, removeCartItem } = useCart();
   const headers = ["Product", "Price", "Quantity", "Total", "Action"];
   const [tableItems, setTableItems] = useState<TableItem[]>([]);
 
@@ -34,9 +34,13 @@ function Checkout() {
 
   return (
     <div className={classNames["checkout-wrapper"]}>
-      <h2>My Cart (10)</h2>
+      <h2>My Cart ({getCartQuantity().toString()})</h2>
       <Card variant="light" classes="padding-45">
-        <Table headers={headers} tableItems={tableItems} />
+        <Table
+          headers={headers}
+          tableItems={tableItems}
+          removeItem={removeCartItem}
+        />
         <section>
           <p className={classNames.text}>SUB TOTAL</p>
           <p className={classNames.sub}>
