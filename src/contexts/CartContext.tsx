@@ -11,7 +11,7 @@ export const CartContext = createContext({} as CartContextType);
 
 function CartProvider({ children }: CartProviderProps) {
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
-    "shopping-cart",
+    "lendo-cart",
     []
   );
 
