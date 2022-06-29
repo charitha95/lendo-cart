@@ -40,7 +40,12 @@ function Table({
       </thead>
       <tbody>
         {tableItems.map((item) => (
-          <tr key={`${item.id}-${item.variant}-${item.color}`}>
+          <tr
+            key={`${item.id}-${item.variant}-${item.color}`}
+            className={`${
+              item.quantity === 0 ? classNames["stike-though"] : null
+            }`}
+          >
             <td className={classNames["product-info"]}>
               <div className={classNames["img-section"]}>
                 <img src={item.imgUrl} alt="product" />
@@ -49,7 +54,13 @@ function Table({
               <div className={classNames["misc-info"]}>
                 <p className={classNames.name}>{item.name}</p>
                 <section>
-                  <p>{item.color}</p>
+                  <p
+                    className={`${
+                      item.quantity === 0 ? classNames["stike-though"] : null
+                    }`}
+                  >
+                    {item.color}
+                  </p>
                   {item.optionName ? (
                     <Chip
                       text={`${item.optionName} - ${item.variant.toString()}`}
