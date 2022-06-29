@@ -2,9 +2,9 @@ import { CartItem } from "../../../types";
 import { CloseButton } from "../Button";
 import ColorCircle from "../ColorCircle";
 import classNames from "./style.module.scss";
-import productImg from "../../../assets/images/ps4.png";
 import Chip from "../Chip";
 import QuantityInput from "../QuantityInput";
+import formatCurrency from "../../../helpers/formatCurrency";
 
 type TableProps = {
   headers: string[];
@@ -35,7 +35,7 @@ function Table({
           <tr key={`${item.id}-${item.variant}`}>
             <td className={classNames["product-info"]}>
               <div className={classNames["img-section"]}>
-                <img src={productImg} alt="product" />
+                <img src={item.imgUrl} alt="product" />
                 <ColorCircle size="sm" variant={item.color} />
               </div>
               <div className={classNames["misc-info"]}>
@@ -49,7 +49,7 @@ function Table({
                 </section>
               </div>
             </td>
-            <td>{item.price}</td>
+            <td>{formatCurrency(item.price)}</td>
             <td>
               <QuantityInput
                 maxQnt={item.maxQnt}
@@ -62,7 +62,9 @@ function Table({
                 quantity={item.quantity}
               />
             </td>
-            <td className={classNames.total}>{+item.price * item.quantity}</td>
+            <td className={classNames.total}>
+              {formatCurrency((+item.price * item.quantity).toString())}
+            </td>
             <td>
               <CloseButton
                 onClick={() => removeItem(item.id, item.variant.toString())}

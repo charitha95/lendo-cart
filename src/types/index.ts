@@ -31,4 +31,5 @@ export type CartItem = {
   price: string;
   name: string;
   maxQnt: number;
+  imgUrl: string;
 };

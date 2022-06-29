@@ -21,6 +21,7 @@ function Home() {
                   image={product.imgUrl}
                   name={product.name}
                   price={product.price}
+                  availabile={product.available}
                 />
               </Link>
             </div>

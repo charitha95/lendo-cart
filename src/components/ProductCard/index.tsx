@@ -3,19 +3,28 @@ import classNames from "./style.module.scss";
 import arrowIcon from "../../assets/icons/arrow-light.svg";
 import { SecondaryButton } from "../UIKit/Button";
 import formatCurrency from "../../helpers/formatCurrency";
+import Chip from "../UIKit/Chip";
 
 type ProductCardProps = {
   image: string;
   name: string;
   price: string;
   brand: string;
+  availabile: boolean;
 };
 
-function ProductCard({ image, name, price, brand }: ProductCardProps) {
+function ProductCard({
+  image,
+  name,
+  price,
+  brand,
+  availabile
+}: ProductCardProps) {
   return (
     <div className={classNames["product-wrapper"]}>
       <Card variant="light" classes={classNames["product-card"]}>
         <img src={image} alt="product" />
+        {!availabile ? <Chip text="out of stock" variant="danger" /> : null}
       </Card>
       <div className={classNames["hover-card"]}>
         <section className={classNames.info}>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   PrimaryButton,
   RadioButtonGroup,
@@ -124,7 +124,8 @@ function ProductDetail() {
       variant: selectedVariant,
       name: product.name,
       price: product.price,
-      optionName: variant.name
+      optionName: variant.name,
+      imgUrl: product.imgUrl
     });
   };
 
@@ -180,11 +181,13 @@ function ProductDetail() {
       const sameItem = getSameItem();
       if (sameItem && sameItem.length) {
         return (
-          <SecondaryButton
-            variant="dark"
-            icon={arrowIcon}
-            text="View in cart"
-          />
+          <Link to="/cart">
+            <SecondaryButton
+              variant="dark"
+              icon={arrowIcon}
+              text="View in cart"
+            />
+          </Link>
         );
       }
     }
