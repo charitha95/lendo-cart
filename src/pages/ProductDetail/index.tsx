@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PrimaryButton, RadioButtonGroup } from "../../components/UIKit/Button";
+import {
+  PrimaryButton,
+  RadioButtonGroup,
+  SecondaryButton
+} from "../../components/UIKit/Button";
 import { Colors, Product } from "../../types";
 import ColorCircle from "../../components/UIKit/ColorCircle";
 import classNames from "./style.module.scss";
@@ -10,7 +14,8 @@ import Divider from "../../components/UIKit/Divider";
 import QuantityInput from "../../components/UIKit/QuantityInput";
 import addToCartIcon from "../../assets/icons/cart-add-light.svg";
 import errorIcon from "../../assets/icons/error.svg";
-import weight from "../../assets/icons/weight.svg";
+import weightIcon from "../../assets/icons/weight.svg";
+import arrowIcon from "../../assets/icons/arrow-light.svg";
 import data from "../../data/products.json";
 import formatCurrency from "../../helpers/formatCurrency";
 import useCart from "../../hooks/useCart";
@@ -21,7 +26,7 @@ type Variant = {
 };
 
 function ProductDetail() {
-  const { addToCart } = useCart();
+  const { addToCart, getCartItemById } = useCart();
 
   const [color, setColor] = useState("" as Colors);
   const [quantity, setQuantity] = useState(0);
@@ -39,6 +44,7 @@ function ProductDetail() {
   useEffect(() => {
     if (id) {
       setProduct(data.items[+id - 1]);
+      console.log(getCartItemById(+id)[0]);
     }
   }, [id, product]);
 
@@ -129,6 +135,35 @@ function ProductDetail() {
     );
   };
 
+  const renderActions = () => {
+    if (!product.available) {
+      return (
+        <p className={classNames.error}>
+          <img src={errorIcon} alt="error" /> Sorry! out of stock
+        </p>
+      );
+    }
+    if (
+      id &&
+      getCartItemById(+id)[0].color === color &&
+      getCartItemById(+id)[0].variant === selectedVariant
+    ) {
+      return (
+        <SecondaryButton variant="dark" icon={arrowIcon} text="View in cart" />
+      );
+    }
+    return (
+      <PrimaryButton
+        text="Add to cart"
+        icon={addToCartIcon}
+        variant="dark"
+        quantity={quantity.toString()}
+        onClick={handleAddToCart}
+        disabled={quantity === 0 || (!selectedVariant && !variantError)}
+      />
+    );
+  };
+
   return (
     <div className={classNames["detail-wrapper"]}>
       <div className="grid">
@@ -149,7 +184,11 @@ function ProductDetail() {
               <div className={classNames.review}>
                 <Rating />
                 <p>155 reviews</p>
-                <img src={weight} alt="weight" className={classNames.weight} />
+                <img
+                  src={weightIcon}
+                  alt="weight"
+                  className={classNames.weight}
+                />
                 <p>{product.weight}kg</p>
               </div>
               <p className={classNames.desc}>
@@ -186,22 +225,7 @@ function ProductDetail() {
                     {formatCurrency((quantity * +product.price).toString())}
                   </p>
                 </div>
-                {!product.available ? (
-                  <p className={classNames.error}>
-                    <img src={errorIcon} alt="error" /> Sorry! out of stock
-                  </p>
-                ) : (
-                  <PrimaryButton
-                    text="Add to cart"
-                    icon={addToCartIcon}
-                    variant="dark"
-                    quantity={quantity.toString()}
-                    onClick={handleAddToCart}
-                    disabled={
-                      quantity === 0 || (!selectedVariant && !variantError)
-                    }
-                  />
-                )}
+                {renderActions()}
               </section>
             </Card>
           </div>

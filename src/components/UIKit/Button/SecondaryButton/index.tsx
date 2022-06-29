@@ -5,7 +5,7 @@ type SecondaryButtonProps = {
   icon: string;
   variant: "light" | "dark";
   classes?: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 function SecondaryButton({

@@ -18,12 +18,18 @@ function CartProvider({ children }: CartProviderProps) {
     return cartItems;
   };
 
+  const getCartItemById = (id: number) => {
+    return cartItems.filter((item) => item.id === id);
+  };
+
   const getCartQuantity = () => {
     return cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, getCartItems, getCartQuantity }}>
+    <CartContext.Provider
+      value={{ addToCart, getCartItems, getCartItemById, getCartQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );
