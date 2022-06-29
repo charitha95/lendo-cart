@@ -28,14 +28,14 @@ function CartProvider({ children }: CartProviderProps) {
   };
 
   const getTotal = () => {
-    return cartItems.reduce((total, cartItem) => {
+    return cartItems.reduce((curr, cartItem) => {
       const item = data.items.find((i) => i.id === cartItem.id);
-      let to = 0;
+      let total = 0;
       if (item) {
         const { price } = item;
-        to = total + +price * cartItem.quantity;
+        total = curr + +price * cartItem.quantity;
       }
-      return to;
+      return total;
     }, 0);
   };
 

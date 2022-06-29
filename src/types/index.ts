@@ -28,3 +28,12 @@ export type CartItem = {
   color: Colors;
   variant: number | string;
 };
+
+export type TableItem = {
+  id: number;
+  quantity: number;
+  color: Colors;
+  variant: number | string;
+  price: string;
+  name: string;
+};
