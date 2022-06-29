@@ -66,17 +66,18 @@ function ProductDetail() {
     // check weather product has options/variant
     if (Object.keys(option).length > 2) {
       // setting the variant/options
-      Object.values(option).forEach((val, indx) => {
+      Object.values(option).forEach((values, indx) => {
         // indx !== 0 to make sure its not getting color,
         // color is always the first element of the object
-        if (Array.isArray(val) && indx !== 0) {
+        if (Array.isArray(values) && indx !== 0) {
           setVariant({
             name: Object.keys(option)[indx],
-            values: val
+            values
           });
         }
       });
       setVariantError(false);
+      setSelectedVariant("");
     } else {
       setVariantError(true);
     }
@@ -103,6 +104,15 @@ function ProductDetail() {
 
   const onDecrement = () => {
     if (canDecrement) setQuantity(quantity - 1);
+  };
+
+  const getSameItem = () => {
+    if (id) {
+      return getCartItemById(+id).filter(
+        (item) => item.color === color && item.variant === selectedVariant
+      );
+    }
+    return null;
   };
 
   const handleAddToCart = () => {
@@ -134,6 +144,26 @@ function ProductDetail() {
     );
   };
 
+  const renderMessages = () => {
+    if (!variantError && Object.keys(variant).length > 0 && !selectedVariant) {
+      return (
+        <p className={classNames.danger}>
+          please select a {variant.name} option from above
+        </p>
+      );
+    }
+    if (id) {
+      const sameItem = getSameItem();
+      if (sameItem && sameItem.length) {
+        const qnt = sameItem.reduce((curr, item) => curr + item.quantity, 0);
+        return (
+          <p className={classNames.warning}>{qnt} items already in the cart</p>
+        );
+      }
+    }
+    return null;
+  };
+
   const renderActions = () => {
     if (!product.available) {
       return (
@@ -143,10 +173,8 @@ function ProductDetail() {
       );
     }
     if (id) {
-      const sameColorItems = getCartItemById(+id).filter(
-        (item) => item.color === color && item.variant === selectedVariant
-      );
-      if (sameColorItems.length) {
+      const sameItem = getSameItem();
+      if (sameItem && sameItem.length) {
         return (
           <SecondaryButton
             variant="dark"
@@ -209,14 +237,7 @@ function ProductDetail() {
               <Divider />
               {renderOptions()}
               <Divider />
-              {/* <p className={classNames.warning}>3 items already in the cart</p> */}
-              {!variantError &&
-              Object.keys(variant).length > 0 &&
-              !selectedVariant ? (
-                <p className={classNames.danger}>
-                  please select an option from above
-                </p>
-              ) : null}
+              {renderMessages()}
               <section className={classNames.action}>
                 <div className={classNames.total}>
                   <QuantityInput
