@@ -11,8 +11,17 @@ export const CartContext = createContext({} as CartContextType);
 function CartProvider({ children }: CartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  const sortItems = (items: CartItem[]) => {
+    return items.sort(
+      (a, b) =>
+        a.name.localeCompare(b.name) ||
+        a.variant.toString().localeCompare(b.variant.toString())
+    );
+  };
+
   const addToCart = (item: CartItem) => {
-    setCartItems([...cartItems, item]);
+    const sortedItems = sortItems([...cartItems, item]);
+    setCartItems(sortedItems);
   };
 
   const getCartItems = () => {
@@ -47,7 +56,8 @@ function CartProvider({ children }: CartProviderProps) {
     } else {
       sameItems = sameItems.filter((item) => item.color !== color);
     }
-    setCartItems([...otherItems, ...sameItems]);
+    const sortedItems = sortItems([...otherItems, ...sameItems]);
+    setCartItems(sortedItems);
   };
 
   const increaseQuantity = (id: number, variant: string, color: Colors) => {
