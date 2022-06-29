@@ -44,7 +44,6 @@ function ProductDetail() {
   useEffect(() => {
     if (id) {
       setProduct(data.items[+id - 1]);
-      console.log(getCartItemById(+id)[0]);
     }
   }, [id, product]);
 
@@ -143,14 +142,19 @@ function ProductDetail() {
         </p>
       );
     }
-    if (
-      id &&
-      getCartItemById(+id)[0].color === color &&
-      getCartItemById(+id)[0].variant === selectedVariant
-    ) {
-      return (
-        <SecondaryButton variant="dark" icon={arrowIcon} text="View in cart" />
+    if (id) {
+      const sameColorItems = getCartItemById(+id).filter(
+        (item) => item.color === color && item.variant === selectedVariant
       );
+      if (sameColorItems.length) {
+        return (
+          <SecondaryButton
+            variant="dark"
+            icon={arrowIcon}
+            text="View in cart"
+          />
+        );
+      }
     }
     return (
       <PrimaryButton
