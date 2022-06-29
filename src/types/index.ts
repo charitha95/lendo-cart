@@ -10,3 +10,20 @@ export type Product = {
   imgUrl: string;
   options: any[];
 };
+
+export type CartContextType = {
+  addToCart: (item: CartItem) => void;
+  getCartItems: () => CartItem[];
+  // getCartItemById: () => void;
+  getCartQuantity: () => number;
+  // removeCartItem: () => void;
+  // increaseQuantity: () => void;
+  // decreaseQuantity: () => void;
+};
+
+export type CartItem = {
+  id: number;
+  quantity: number;
+  color: string;
+  variant: number | string;
+};

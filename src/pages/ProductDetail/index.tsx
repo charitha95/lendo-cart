@@ -25,7 +25,7 @@ function ProductDetail() {
   const [maxQnt, setMaxQnt] = useState(0);
   const [variant, setVariant] = useState({} as Variant);
   const [selectedVariant, setSelectedVariant] = useState("");
-  const [noVariant, setNoVariant] = useState(false);
+  const [variantError, setVariantError] = useState(false);
   const [product, setProduct] = useState({} as Product);
 
   const canDecrement = quantity !== 0;
@@ -68,9 +68,9 @@ function ProductDetail() {
           });
         }
       });
-      setNoVariant(false);
+      setVariantError(false);
     } else {
-      setNoVariant(true);
+      setVariantError(true);
     }
   };
 
@@ -90,19 +90,15 @@ function ProductDetail() {
   };
 
   const onIncrement = () => {
-    if (canIncrement) {
-      setQuantity(quantity + 1);
-    }
+    if (canIncrement) setQuantity(quantity + 1);
   };
 
   const onDecrement = () => {
-    if (canDecrement) {
-      setQuantity(quantity - 1);
-    }
+    if (canDecrement) setQuantity(quantity - 1);
   };
 
   const renderOptions = () => {
-    if (noVariant) {
+    if (variantError) {
       return (
         <p className={classNames["empty-selection"]}>no options available</p>
       );
@@ -159,7 +155,7 @@ function ProductDetail() {
               {renderOptions()}
               <Divider />
               {/* <p className={classNames.warning}>3 items already in the cart</p> */}
-              {!noVariant &&
+              {!variantError &&
               Object.keys(variant).length > 0 &&
               !selectedVariant ? (
                 <p className={classNames.danger}>
@@ -190,7 +186,7 @@ function ProductDetail() {
                     quantity={quantity.toString()}
                     onClick={() => {}}
                     disabled={
-                      quantity === 0 || (!selectedVariant && !noVariant)
+                      quantity === 0 || (!selectedVariant && !variantError)
                     }
                   />
                 )}

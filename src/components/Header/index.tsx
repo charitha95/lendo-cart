@@ -5,10 +5,10 @@ import classNames from "./style.module.scss";
 import cartIcon from "../../assets/icons/cart-outline.svg";
 import logo from "../../assets/branding/logo.svg";
 import Search from "../Search";
+import useCart from "../../hooks/useCart";
 
 function Header() {
-  const handleCartClick = () => {};
-
+  const { getCartQuantity } = useCart();
   return (
     <div className={classNames.header}>
       <Container>
@@ -23,8 +23,8 @@ function Header() {
                 text="5600kr"
                 icon={cartIcon}
                 variant="light"
-                quantity="5"
-                onClick={handleCartClick}
+                quantity={getCartQuantity().toString()}
+                onClick={() => {}}
               />
             </Link>
           </div>
