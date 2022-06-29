@@ -24,6 +24,6 @@ export type CartContextType = {
 export type CartItem = {
   id: number;
   quantity: number;
-  color: string;
+  color: Colors;
   variant: number | string;
 };

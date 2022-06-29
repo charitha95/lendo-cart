@@ -13,6 +13,7 @@ import errorIcon from "../../assets/icons/error.svg";
 import weight from "../../assets/icons/weight.svg";
 import data from "../../data/products.json";
 import formatCurrency from "../../helpers/formatCurrency";
+import useCart from "../../hooks/useCart";
 
 type Variant = {
   name: string;
@@ -20,6 +21,8 @@ type Variant = {
 };
 
 function ProductDetail() {
+  const { addToCart } = useCart();
+
   const [color, setColor] = useState("" as Colors);
   const [quantity, setQuantity] = useState(0);
   const [maxQnt, setMaxQnt] = useState(0);
@@ -95,6 +98,15 @@ function ProductDetail() {
 
   const onDecrement = () => {
     if (canDecrement) setQuantity(quantity - 1);
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      color,
+      id: product.id,
+      quantity,
+      variant: selectedVariant
+    });
   };
 
   const renderOptions = () => {
@@ -184,7 +196,7 @@ function ProductDetail() {
                     icon={addToCartIcon}
                     variant="dark"
                     quantity={quantity.toString()}
-                    onClick={() => {}}
+                    onClick={handleAddToCart}
                     disabled={
                       quantity === 0 || (!selectedVariant && !variantError)
                     }

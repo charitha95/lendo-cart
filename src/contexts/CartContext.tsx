@@ -19,7 +19,7 @@ function CartProvider({ children }: CartProviderProps) {
   };
 
   const getCartQuantity = () => {
-    return cartItems.length;
+    return cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
   };
 
   return (
