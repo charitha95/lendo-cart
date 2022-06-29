@@ -18,7 +18,6 @@ function Checkout() {
             icon={cartIcon}
             variant="dark"
             quantity="10"
-            onClick={() => {}}
           />
         </section>
       </Card>

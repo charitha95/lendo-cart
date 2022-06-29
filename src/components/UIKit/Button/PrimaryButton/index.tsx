@@ -7,7 +7,7 @@ type PrimaryButtonProps = {
   variant: "light" | "dark";
   quantity: string;
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 function PrimaryButton({

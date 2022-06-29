@@ -24,7 +24,6 @@ function Header() {
                 icon={cartIcon}
                 variant="light"
                 quantity={getCartQuantity().toString()}
-                onClick={() => {}}
               />
             </Link>
           </div>
