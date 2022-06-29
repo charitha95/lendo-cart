@@ -39,20 +39,22 @@ function ProductDetail() {
     }
   }, [id, product]);
 
-  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // set color
+  const setQuantityStates = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // set quantity
     const option = product.options.filter((i: any) => {
       // sometimes color placed inside of an array
       if (Array.isArray(i.color)) return i.color[0] === e.target.value;
       return i.color === e.target.value;
     })[0];
-    setColor(e.target.value as Colors);
-
-    // set quantity
     // if newer option has less qnty than previously selected option
     if (quantity > option.quantity) setQuantity(option.quantity);
     setMaxQnt(option.quantity);
 
+    return option;
+  };
+
+  const setOptionsStates = (option: any) => {
+    // set options (options doesnt have a unique property in the given json, thus doing this)
     // check weather product has options/variant
     if (Object.keys(option).length > 2) {
       // setting the variant/options
@@ -70,7 +72,17 @@ function ProductDetail() {
     } else {
       setNoVariant(true);
     }
-    // set variant (variant doesnt have a unique property in the given json, thus doing this)
+  };
+
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // set color
+    setColor(e.target.value as Colors);
+
+    // set quantity
+    const option = setQuantityStates(e);
+
+    // set options
+    setOptionsStates(option);
   };
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
