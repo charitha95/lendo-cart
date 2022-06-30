@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Card from "../UIKit/Card";
 import classNames from "./style.module.scss";
 import couchImage from "../../assets/branding/couch.svg";
@@ -21,12 +22,14 @@ function Banner() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore.
             </p>
-            <SecondaryButton
-              text="Learn more"
-              icon={arrowIcon}
-              variant="light"
-              onClick={handleLeanMoreClick}
-            />
+            <Link to="/sale">
+              <SecondaryButton
+                text="Learn more"
+                icon={arrowIcon}
+                variant="light"
+                onClick={handleLeanMoreClick}
+              />
+            </Link>
           </section>
           <img
             className={classNames["promo-img"]}

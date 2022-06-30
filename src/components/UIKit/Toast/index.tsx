@@ -1,4 +1,3 @@
-// import { CloseButton } from "../Button";
 import classNames from "./style.module.scss";
 import checkIcon from "../../../assets/icons/check.svg";
 
@@ -12,7 +11,6 @@ function Toast({ text, showToast = false }: ToastProps) {
     <div className={`${classNames.toast} ${showToast ? "" : classNames.hide}`}>
       <img src={checkIcon} alt="check" />
       <p>{text}</p>
-      {/* <CloseButton onClick={() => {}} /> */}
     </div>
   );
 }

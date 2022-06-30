@@ -56,7 +56,9 @@ function CartProvider({ children }: CartProviderProps) {
     const otherItems = cartItems.filter((item) => item.id !== id);
     let sameItems = cartItems.filter((item) => item.id === id);
     if (variant) {
-      sameItems = sameItems.filter((item) => item.variant !== variant);
+      sameItems = sameItems.filter(
+        (item) => item.variant !== variant || item.color !== color
+      );
     } else {
       sameItems = sameItems.filter((item) => item.color !== color);
     }

@@ -5,7 +5,7 @@
   border-radius: 50%;
   display: inline-block;
   @extend %ease;
-  
+
   &.sm {
     height: 70px;
     width: 70px;
@@ -34,5 +34,9 @@
   }
   &.green {
     background-color: #56efac;
+  }
+
+  &.sm {
+    box-shadow: none;
   }
 }
