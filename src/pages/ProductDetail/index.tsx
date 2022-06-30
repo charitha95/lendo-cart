@@ -74,10 +74,15 @@ function ProductDetail() {
         // indx !== 0 to make sure its not getting color,
         // color is always the first element of the object
         if (Array.isArray(values) && indx !== 0) {
-          setVariant({
-            name: Object.keys(option)[indx],
-            values
-          });
+          // reset options
+          setVariant({ name: Object.keys(option)[indx], values: [""] });
+          // to make sure this state call is not batched
+          setTimeout(() => {
+            setVariant({
+              name: Object.keys(option)[indx],
+              values
+            });
+          }, 0);
         }
       });
       setVariantError(false);
