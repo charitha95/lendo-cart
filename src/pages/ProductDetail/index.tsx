@@ -278,7 +278,12 @@ function ProductDetail() {
                 </div>
                 {renderActions()}
               </section>
-              <Toast text="Item added to the cart" showToast={showToast} />
+              <Toast
+                text={`${quantity} ${
+                  quantity > 1 ? "items" : "item"
+                } added to the cart`}
+                showToast={showToast}
+              />
             </Card>
           </div>
         ) : null}
