@@ -16,12 +16,22 @@ function QuantityInput({
   const canIncrement = quantity < maxQnt;
 
   return (
-    <div className={classNames.quantity}>
-      <button type="button" disabled={!canDecrement} onClick={onDecrement}>
+    <div className={classNames.quantity} data-testid="quantity-input">
+      <button
+        type="button"
+        disabled={!canDecrement}
+        onClick={onDecrement}
+        data-testid="quantity-decrement"
+      >
         -
       </button>
       <span>{quantity}</span>
-      <button type="button" disabled={!canIncrement} onClick={onIncrement}>
+      <button
+        type="button"
+        disabled={!canIncrement}
+        onClick={onIncrement}
+        data-testid="quantity-increment"
+      >
         +
       </button>
     </div>

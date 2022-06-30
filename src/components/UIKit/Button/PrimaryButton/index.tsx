@@ -24,6 +24,7 @@ function PrimaryButton({
       className={`${classNames[variant]} ${classNames["primary-btn"]}`}
       onClick={onClick}
       disabled={disabled}
+      data-testid="primary-button"
     >
       <img src={icon} alt="cart" />
       {text}

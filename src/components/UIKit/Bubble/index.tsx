@@ -7,7 +7,10 @@ type BubbleProps = {
 
 function Bubble({ text, variant }: BubbleProps) {
   return (
-    <span className={`${classNames[variant]} ${classNames.bubble}`}>
+    <span
+      className={`${classNames[variant]} ${classNames.bubble}`}
+      data-testid="bubble"
+    >
       {text}
     </span>
   );
