@@ -96,10 +96,16 @@ function ProductDetail() {
 
     // set options
     setOptionsStates(option);
+
+    // hide toast
+    if (showToast) setShowToast(false);
   };
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedVariant(e.target.value);
+
+    // hide toast
+    if (showToast) setShowToast(false);
   };
 
   const onIncrement = () => {
