@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   PrimaryButton,
   RadioButtonGroup,
@@ -26,6 +26,9 @@ type Variant = {
 };
 
 function ProductDetail() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const { addToCart, getCartItemById } = useCart();
 
   const [color, setColor] = useState("" as Colors);
@@ -39,13 +42,12 @@ function ProductDetail() {
   const canDecrement = quantity !== 0;
   const canIncrement = quantity < maxQnt;
 
-  const { id } = useParams();
-
   useEffect(() => {
     if (id) {
-      setProduct(data.items[+id - 1]);
+      if (data.items.length - 1 >= +id - 1) setProduct(data.items[+id - 1]);
+      else navigate("/not-found");
     }
-  }, [id, product]);
+  }, [id, navigate, product]);
 
   const setQuantityStates = (e: React.ChangeEvent<HTMLInputElement>) => {
     // set quantity
