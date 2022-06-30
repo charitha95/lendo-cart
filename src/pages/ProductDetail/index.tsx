@@ -19,6 +19,7 @@ import arrowIcon from "../../assets/icons/arrow-light.svg";
 import data from "../../data/products.json";
 import formatCurrency from "../../helpers/formatCurrency";
 import useCart from "../../hooks/useCart";
+import Toast from "../../components/UIKit/Toast";
 
 type Variant = {
   name: string;
@@ -38,6 +39,7 @@ function ProductDetail() {
   const [selectedVariant, setSelectedVariant] = useState("");
   const [variantError, setVariantError] = useState(false);
   const [product, setProduct] = useState({} as Product);
+  const [showToast, setShowToast] = useState(false);
 
   const canDecrement = quantity !== 0;
   const canIncrement = quantity < maxQnt;
@@ -129,6 +131,10 @@ function ProductDetail() {
       optionName: variant.name,
       imgUrl: product.imgUrl
     });
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 2500);
   };
 
   const renderOptions = () => {
@@ -261,6 +267,7 @@ function ProductDetail() {
                 </div>
                 {renderActions()}
               </section>
+              <Toast text="Item added to the cart" showToast={showToast} />
             </Card>
           </div>
         ) : null}

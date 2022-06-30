@@ -3,6 +3,7 @@
 .card {
   border-radius: 32px;
   overflow: hidden;
+  position: relative;
   &.dark {
     background: $primary-color;
   }
