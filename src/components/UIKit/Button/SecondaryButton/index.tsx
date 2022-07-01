@@ -20,6 +20,7 @@ function SecondaryButton({
       type="button"
       className={`${classNames[variant]} ${classNames["secondary-btn"]} ${classes}`}
       onClick={onClick}
+      data-testid="secondary-button"
     >
       {text}
       <img src={icon} alt="cart" />

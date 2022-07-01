@@ -7,7 +7,12 @@ type ChipProps = {
 
 function Chip({ text, variant }: ChipProps) {
   return (
-    <div className={`${classNames.chip} ${classNames[variant]}`}>{text}</div>
+    <div
+      className={`${classNames.chip} ${classNames[variant]}`}
+      data-testid="chip"
+    >
+      {text}
+    </div>
   );
 }
 
