@@ -238,7 +238,18 @@ describe("Lendo Cart E2E", () => {
     expect(priceForTwo).toBe(+formattedPrice);
   });
 
-  it("should render the view cart button and hide add to cart button", async () => {
+  it("should update the quantity in the header", async () => {
+    const element = await page.$('[data-testid="header-total"]');
+    const value = await page.evaluate((el) => el.textContent, element);
+
+    const formattedPrice = value
+      .split(".")[1]
+      .replace(/[^\d.-]/g, "")
+      .replaceAll("0", "");
+    expect(formattedPrice).toBe("2");
+  });
+
+  xit("should render the view cart button and hide add to cart button", async () => {
     const viewCartBtn = await page.$('[data-testid="view-cart-btn"]');
     expect(viewCartBtn).toBeTruthy();
     const addTOCartBtn = await page.$('[data-testid="add-to-cart-btn"]');
@@ -256,13 +267,13 @@ describe("Lendo Cart E2E", () => {
     expect(message).toBe("2 items already in the cart");
   });
 
-  it("should click view cart", async () => {
+  it("should navigate to cart/checkout page", async () => {
     await page.waitForTimeout(3000);
     const selector = '[data-testid="view-cart-btn"]';
     await page.$eval(selector, (button) => button.click());
   });
 
-  xit("should navigate to cart/checkout page", async () => {
+  xit("should render cart/checkout page", async () => {
     const selector = '[data-testid="my-cart"]';
     await page.waitForSelector(selector);
     const message = await page.$eval(selector, (ele) => ele.textContent);
