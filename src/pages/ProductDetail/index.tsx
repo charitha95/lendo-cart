@@ -164,7 +164,9 @@ function ProductDetail() {
       );
     }
     return (
-      <p className={classNames["empty-selection"]}>please select a color</p>
+      <p className={classNames["empty-selection"]} data-testid="color-msg">
+        please select a color
+      </p>
     );
   };
 

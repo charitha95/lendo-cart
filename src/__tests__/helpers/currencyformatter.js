@@ -4,5 +4,7 @@ const CURRENCY_FORMAT = Intl.NumberFormat("se-SE", {
 });
 
 module.exports = function currencyFormatter(price) {
-  return CURRENCY_FORMAT.format(+price);
+  return CURRENCY_FORMAT.format(+price)
+    .replace(",", ".")
+    .replace(/[^\d.-]/g, "");
 };

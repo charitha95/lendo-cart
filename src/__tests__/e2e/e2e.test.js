@@ -104,14 +104,12 @@ describe("Lendo Cart E2E", () => {
   });
 
   xit("should render product info", async () => {
-    const price = currencyformatter(data.items[2].price)
-      .replace(",", ".")
-      .replace(/[^\d.-]/g, "");
+    const price = currencyformatter(data.items[2].price);
     const element = await page.$('[data-testid="product-price"]');
     const value = await page.evaluate((el) => el.textContent, element);
     const elPrice = value.replace(/[^\d.-]/g, "");
 
-    await expect(elPrice).toBe(price);
+    expect(elPrice).toBe(price);
 
     await expect(page).toMatchElement('[data-testid="product-name"]', {
       text: data.items[2].name
@@ -124,8 +122,18 @@ describe("Lendo Cart E2E", () => {
     });
   });
 
-  it.todo("should renders color options");
-  it.todo("should check choose color message");
+  it("should render product's color options", async () => {
+    const selector = '[data-testid="color-msg"]';
+    const message = await page.$eval(selector, (ele) => ele.textContent);
+    expect(message).toBe("please select a color");
+  });
+
+  // it("should render message 'please select a color'", async () => {
+  //   const selector = '[data-testid="color-msg"]';
+  //   const message = await page.$eval(selector, (ele) => ele.textContent);
+  //   expect(message).toBe("please select a color");
+  // });
+
   it.todo("should check quntity input disabile || not");
   it.todo("should select a color");
   it.todo("should select a option");
