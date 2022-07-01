@@ -183,7 +183,9 @@ function ProductDetail() {
       if (sameItem && sameItem.length) {
         const qnt = sameItem.reduce((curr, item) => curr + item.quantity, 0);
         return (
-          <p className={classNames.warning}>{qnt} items already in the cart</p>
+          <p className={classNames.warning} data-testid="already-added-msg">
+            {qnt} items already in the cart
+          </p>
         );
       }
     }
@@ -207,6 +209,7 @@ function ProductDetail() {
               variant="dark"
               icon={arrowIcon}
               text="View in cart"
+              testId="view-cart-btn"
             />
           </Link>
         );
@@ -220,6 +223,7 @@ function ProductDetail() {
         quantity={quantity.toString()}
         onClick={handleAddToCart}
         disabled={quantity === 0 || (!selectedVariant && !variantError)}
+        testId="add-to-cart-btn"
       />
     );
   };

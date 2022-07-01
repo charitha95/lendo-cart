@@ -178,8 +178,8 @@ describe("Lendo Cart E2E", () => {
   });
 
   xit("should validate add to cart action", async () => {
-    const button = await page.$x("//button[contains(., 'Add to cart')]");
-    const disabled = await page.evaluate((el) => el.disabled, button[0]);
+    const btnSelector = '[data-testid="add-to-cart-btn"]';
+    const disabled = await page.$eval(btnSelector, (button) => button.disabled);
     expect(disabled).toBe(true);
 
     const selector = '[data-testid="option-smg"]';
@@ -209,7 +209,7 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selectord, (button) => button.click());
   });
 
-  xit("should calculated price accordingly", async () => {
+  xit("should calculat total price accordingly", async () => {
     const priceForTwo = +data.items[2].price * 2;
     const price = currencyformatter(priceForTwo);
     const element = await page.$('[data-testid="calc-price"]');
@@ -219,17 +219,17 @@ describe("Lendo Cart E2E", () => {
   });
 
   xit("should enable the add to cart button", async () => {
-    const button = await page.$x("//button[contains(., 'Add to cart')]");
-    const disabled = await page.evaluate((el) => el.disabled, button[0]);
+    const selector = '[data-testid="add-to-cart-btn"]';
+    const disabled = await page.$eval(selector, (button) => button.disabled);
     expect(disabled).toBe(false);
   });
 
   it("should click on add to cart", async () => {
-    const button = await page.$x("//button[contains(., 'Add to cart')]");
-    await button[0].click();
+    const selector = '[data-testid="add-to-cart-btn"]';
+    await page.$eval(selector, (button) => button.click());
   });
 
-  it("should update the price in the header", async () => {
+  xit("should update the price in the header", async () => {
     const element = await page.$('[data-testid="header-total"]');
     const value = await page.evaluate((el) => el.textContent, element);
 
@@ -238,8 +238,24 @@ describe("Lendo Cart E2E", () => {
     expect(priceForTwo).toBe(+formattedPrice);
   });
 
-  it.todo("should check renders view cart button");
-  it.todo("should check message 'already in the cart'");
+  it("should render the view cart button and hide add to cart button", async () => {
+    const viewCartBtn = await page.$('[data-testid="view-cart-btn"]');
+    expect(viewCartBtn).toBeTruthy();
+    const addTOCartBtn = await page.$('[data-testid="add-to-cart-btn"]');
+    expect(addTOCartBtn).toBeFalsy();
+  });
+
+  it("should render the message 'already in the cart'", async () => {
+    const selector = '[data-testid="already-added-msg"]';
+    await page.waitForSelector(selector);
+
+    const element = await page.$(selector);
+    expect(element).toBeTruthy();
+
+    const message = await page.$eval(selector, (ele) => ele.textContent);
+    expect(message).toBe("2 items already in the cart");
+  });
+
   it.todo("should click view cart");
   it.todo("should check item is there");
   it.todo("should check item quntity");
