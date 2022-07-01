@@ -33,7 +33,7 @@ function Checkout() {
         {getCartItems().length > 0 ? (
           <section>
             <p className={classNames.text}>SUB TOTAL</p>
-            <p className={classNames.sub}>
+            <p className={classNames.sub} data-testid="cart-sub-total">
               {formatCurrency(getTotal().toString())}
             </p>
             <PrimaryButton

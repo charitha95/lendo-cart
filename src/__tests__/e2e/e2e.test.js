@@ -412,7 +412,7 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
   });
 
-  it("should new item to the cart", async () => {
+  it("should add new item to the cart", async () => {
     const selector = '[data-testid="add-to-cart-btn"]';
     await page.$eval(selector, (button) => button.click());
   });
@@ -423,8 +423,24 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
   });
 
-  it.todo("should check calculated price again once");
-  it.todo("should drement second item to 0");
+  it("should decrement second item (white ps4) to 0", async () => {
+    const selector = '[data-testid="quantity-decrement"]';
+    const items = await page.$$(selector);
+    await items[1].click();
+    await items[1].click();
+    await items[1].click();
+    // await products[1].$eval('[data-testid="secondary-button"]', (button) =>
+    //   button.click()
+    // );
+    // quantity-decrement
+  });
+
+  it("should recalculate the price with new item", async () => {
+    const selector = '[data-testid="cart-sub-total"]';
+    const value = await page.$eval(selector, (ele) => ele.textContent);
+    const formattedPrice = value.replace(/[^\d.-]/g, "");
+    expect(formattedPrice).toBe("24800.00");
+  });
   it.todo("should check strike through");
   it.todo("should remove second item");
   it.todo("should check count on header and button");
