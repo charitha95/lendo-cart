@@ -1,25 +1,32 @@
+const { cleanup } = require("@testing-library/react");
 const puppeteer = require("puppeteer");
 
 const timeout = 15000;
 
-describe("Google", () => {
-  // beforeAll(async () => {
-  //   await page.goto("http://localhost:3000");
-  // });
+afterEach(cleanup);
+
+describe("Lendo Cart E2E", () => {
+  let browser;
+  let page;
+
+  beforeAll(async () => {
+    browser = await puppeteer.launch({
+      headless: false,
+      slowMo: 200,
+      defaultViewport: null
+    });
+    page = await browser.newPage();
+  });
 
   it(
-    "load the app",
+    "should render home page with welcome message",
     async () => {
-      const browser = await puppeteer.launch({ headless: false, slowMo: 200 });
-      const page = await browser.newPage();
       await page.goto("http://localhost:3000");
-      try {
-        await expect(page).toFill("#searchin", "asd", { delay: 250 });
-        // await page.waitForTimeout(500);
-        console.log("found");
-      } catch {
-        console.log("not found");
-      }
+      const selector = '[data-testid="welcome"]';
+      await page.waitForSelector(selector);
+      const text =
+        "Good morning! it's a good day to shopping. Hope you will find what you need!";
+      await expect(page).toMatchElement(selector, { text });
     },
     timeout
   );

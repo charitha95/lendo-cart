@@ -10,7 +10,7 @@ function Banner() {
 
   return (
     <div className={classNames["banner-wrapper"]}>
-      <p>
+      <p data-testid="welcome">
         {`Good morning! it's a good day to shopping. 
       Hope you will find what you need!`}
       </p>

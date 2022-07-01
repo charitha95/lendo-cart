@@ -1,4 +1,5 @@
 module.exports = {
   preset: "jest-puppeteer",
-  testRegex: "./*\\e2e\\.test\\.js$"
+  testRegex: "./*\\e2e\\.test\\.js$",
+  testEnvironment: "jsdom"
 };

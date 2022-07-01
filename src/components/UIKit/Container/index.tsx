@@ -5,7 +5,11 @@ type ContainerProps = {
 };
 
 function Container({ children }: ContainerProps) {
-  return <div className={classNames.container}>{children}</div>;
+  return (
+    <div className={classNames.container} data-testid="container">
+      {children}
+    </div>
+  );
 }
 
 export default Container;
