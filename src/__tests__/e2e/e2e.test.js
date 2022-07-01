@@ -209,7 +209,7 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selectord, (button) => button.click());
   });
 
-  it("should calculated price accordingly", async () => {
+  xit("should calculated price accordingly", async () => {
     const priceForTwo = +data.items[2].price * 2;
     const price = currencyformatter(priceForTwo);
     const element = await page.$('[data-testid="calc-price"]');
@@ -218,13 +218,17 @@ describe("Lendo Cart E2E", () => {
     expect(price).toBe(elPrice);
   });
 
-  it("should enable the add to cart button", async () => {
+  xit("should enable the add to cart button", async () => {
     const button = await page.$x("//button[contains(., 'Add to cart')]");
     const disabled = await page.evaluate((el) => el.disabled, button[0]);
     expect(disabled).toBe(false);
   });
-  it.todo("should check count in add to cart button");
-  it.todo("should click on add to cart");
+
+  it("should click on add to cart", async () => {
+    const button = await page.$x("//button[contains(., 'Add to cart')]");
+    await button[0].click();
+  });
+
   it.todo("should check count on header");
   it.todo("should check renders view cart button");
   it.todo("should check message 'already in the cart'");
