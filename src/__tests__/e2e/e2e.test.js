@@ -2,6 +2,7 @@ const puppeteer = require("puppeteer");
 const { cleanup } = require("@testing-library/react");
 const data = require("../../data/products.json");
 const currencyformatter = require("../helpers/currencyformatter");
+const removeEmptySpaces = require("../helpers/removeEmptySpaces");
 
 const timeout = 15000;
 
@@ -123,16 +124,18 @@ describe("Lendo Cart E2E", () => {
   });
 
   it("should render product's color options", async () => {
+    const selector = '[data-testid="radio-group-color-black"]';
+    const message = await page.$eval(selector, (ele) => ele.textContent);
+    expect(removeEmptySpaces(message)).toBe(
+      data.items[2].options[0].color.toString()
+    );
+  });
+
+  xit("should render message 'please select a color'", async () => {
     const selector = '[data-testid="color-msg"]';
     const message = await page.$eval(selector, (ele) => ele.textContent);
     expect(message).toBe("please select a color");
   });
-
-  // it("should render message 'please select a color'", async () => {
-  //   const selector = '[data-testid="color-msg"]';
-  //   const message = await page.$eval(selector, (ele) => ele.textContent);
-  //   expect(message).toBe("please select a color");
-  // });
 
   it.todo("should check quntity input disabile || not");
   it.todo("should select a color");
