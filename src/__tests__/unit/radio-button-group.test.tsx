@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import { RadioButtonGroup } from "../../UIKit/Button";
+import { RadioButtonGroup } from "../../components/UIKit/Button";
 
 afterAll(cleanup);
 

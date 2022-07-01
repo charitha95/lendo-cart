@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import { PrimaryButton } from "../../UIKit/Button";
+import { PrimaryButton } from "../../components/UIKit/Button";
 import icon from "../../../assets/icons/arrow-blk.svg";
 
 afterAll(cleanup);

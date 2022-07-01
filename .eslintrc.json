@@ -67,5 +67,11 @@
     ],
     "react/jsx-no-constructed-context-values": "off",
     "no-param-reassign": 0
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "jestPuppeteer": true
   }
 }

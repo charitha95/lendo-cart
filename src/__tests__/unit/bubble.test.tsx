@@ -1,5 +1,5 @@
 import { cleanup, screen, render } from "@testing-library/react";
-import Bubble from "../../UIKit/Bubble";
+import Bubble from "../../components/UIKit/Bubble";
 
 afterAll(cleanup);
 

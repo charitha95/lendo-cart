@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import QuantityInput from "../../UIKit/QuantityInput";
+import QuantityInput from "../../components/UIKit/QuantityInput";
 
 afterAll(cleanup);
 
