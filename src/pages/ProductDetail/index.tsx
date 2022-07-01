@@ -278,7 +278,7 @@ function ProductDetail() {
                     onIncrement={onIncrement}
                     quantity={quantity}
                   />
-                  <p>
+                  <p data-testid="calc-price">
                     {formatCurrency((quantity * +product.price).toString())}
                   </p>
                 </div>

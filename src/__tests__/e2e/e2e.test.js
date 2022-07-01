@@ -198,6 +198,7 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
     await page.$eval(selector, (button) => button.click());
   });
+
   it("should decrement quantity by 1", async () => {
     const selector = '[data-testid="quantity-increment"]';
     await page.$eval(selector, (button) => button.click());
@@ -208,7 +209,15 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selectord, (button) => button.click());
   });
 
-  it.todo("should check calculated price");
+  it("should calculated price accordingly", async () => {
+    const priceForTwo = +data.items[2].price * 2;
+    const price = currencyformatter(priceForTwo);
+    const element = await page.$('[data-testid="calc-price"]');
+    const value = await page.evaluate((el) => el.textContent, element);
+    const elPrice = value.replace(/[^\d.-]/g, "");
+    expect(price).toBe(elPrice);
+  });
+
   it.todo("should check count in add to cart button");
   it.todo("should click on add to cart");
   it.todo("should check count on header");
