@@ -316,14 +316,26 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
   });
 
-  it("should recalculate the price", async () => {
+  xit("should recalculate the price", async () => {
     const selector = '[data-testid="cart-item-price"]';
     const value = await page.$eval(selector, (ele) => ele.textContent);
     const formattedPrice = value.replace(/[^\d.-]/g, "");
     expect(formattedPrice).toBe("15000.00");
   });
 
-  it.todo("should check header price and count");
+  it("should update price and count in the header", async () => {
+    const element = await page.$('[data-testid="header-total"]');
+    const value = await page.evaluate((el) => el.textContent, element);
+
+    // price
+    const price = value.split(".")[0].replace(/[^\d.-]/g, "");
+    expect(price).toBe("15000");
+
+    // count
+    const count = value.split(".")[1].replaceAll("0", "");
+    expect(count).toBe("3");
+  });
+
   it.todo("should click back");
   it.todo("should clck select a different color");
   it.todo("should select a different option");
