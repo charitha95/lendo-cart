@@ -173,7 +173,7 @@ function ProductDetail() {
   const renderMessages = () => {
     if (!variantError && Object.keys(variant).length > 0 && !selectedVariant) {
       return (
-        <p className={classNames.danger}>
+        <p className={classNames.danger} data-testid="option-smg">
           please select a {variant.name} option from above
         </p>
       );

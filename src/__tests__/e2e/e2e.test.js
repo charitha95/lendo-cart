@@ -123,7 +123,7 @@ describe("Lendo Cart E2E", () => {
     });
   });
 
-  it("should render product's color options", async () => {
+  xit("should render product's color options", async () => {
     const selector = '[data-testid="radio-group-color-black"]';
     const message = await page.$eval(selector, (ele) => ele.textContent);
     expect(removeEmptySpaces(message)).toBe(
@@ -137,8 +137,55 @@ describe("Lendo Cart E2E", () => {
     expect(message).toBe("please select a color");
   });
 
-  it.todo("should check quntity input disabile || not");
-  it.todo("should select a color");
+  xit("should check quntity input is disabiled", async () => {
+    const selector = '[data-testid="quantity-increment"]';
+    const isIncrementBtnDisabled = await page.$eval(selector, (button) => {
+      return button.disabled;
+    });
+    expect(isIncrementBtnDisabled).toBe(true);
+
+    const selectorDecrement = '[data-testid="quantity-decrement"]';
+    const isDecrementBtnDisabled = await page.$eval(
+      selectorDecrement,
+      (button) => {
+        return button.disabled;
+      }
+    );
+    expect(isDecrementBtnDisabled).toBe(true);
+  });
+
+  it("should select a color", async () => {
+    const selector = '[data-testid="radio-group-color-white"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should validate quantity inputs", async () => {
+    const selectorDecrement = '[data-testid="quantity-decrement"]';
+    const isDecrementBtnDisabled = await page.$eval(
+      selectorDecrement,
+      (button) => {
+        return button.disabled;
+      }
+    );
+    expect(isDecrementBtnDisabled).toBe(true);
+
+    const selector = '[data-testid="quantity-increment"]';
+    const isIncrementBtnDisabled = await page.$eval(selector, (button) => {
+      return button.disabled;
+    });
+    expect(isIncrementBtnDisabled).toBe(false);
+  });
+
+  it("should validate add to cart action", async () => {
+    const button = await page.$x("//button[contains(., 'Add to cart')]");
+    const disabled = await page.evaluate((el) => el.disabled, button[0]);
+    expect(disabled).toBe(true);
+
+    const selector = '[data-testid="option-smg"]';
+    const message = await page.$eval(selector, (ele) => ele.textContent);
+    expect(message).toBe("please select a storage option from above");
+  });
+
   it.todo("should select a option");
   it.todo("should increment by 3");
   it.todo("should decrement by 1");
