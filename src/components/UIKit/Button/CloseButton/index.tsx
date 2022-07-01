@@ -3,16 +3,15 @@ import classNames from "./style.module.scss";
 
 type CloseButtonProps = {
   onClick: () => void;
-  testId?: string;
 };
 
-function CloseButton({ onClick, testId }: CloseButtonProps) {
+function CloseButton({ onClick }: CloseButtonProps) {
   return (
     <button
       type="button"
       className={classNames["close-btn"]}
       onClick={onClick}
-      data-testid={`${testId || "close-button"}`}
+      data-testid="close-button"
     >
       <img src={crossIcon} alt="close" />
     </button>
