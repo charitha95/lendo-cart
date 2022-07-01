@@ -371,13 +371,13 @@ describe("Lendo Cart E2E", () => {
   });
 
   it("should click back twice", async () => {
+    await page.waitForTimeout(1500);
     const selector = '[data-testid="back-btn"]';
     await page.$eval(selector, (button) => button.click());
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(1500);
     await page.$eval(selector, (button) => button.click());
   });
 
-  it.todo("should click back again");
   it.todo("should select only color option item");
   it.todo("should should render message no options");
   it.todo("should increment to max");
