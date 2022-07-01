@@ -73,13 +73,13 @@ describe("Lendo Cart E2E", () => {
         '[data-testid="secondary-button"]',
         (el) => window.getComputedStyle(el).opacity
       );
-      await expect(activeCardOpacity).toBe("1");
+      expect(activeCardOpacity).toBe("1");
 
       const inactiveCardOpacity = await products[3].$eval(
         '[data-testid="secondary-button"]',
         (el) => window.getComputedStyle(el).opacity
       );
-      await expect(inactiveCardOpacity).toBe("0");
+      expect(inactiveCardOpacity).toBe("0");
     },
     timeout
   );
@@ -378,11 +378,51 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
   });
 
-  it.todo("should select only color option item");
-  it.todo("should should render message no options");
-  it.todo("should increment to max");
-  it.todo("should click add to cart again");
-  it.todo("should click view cart again");
+  it("should select only color option item/product", async () => {
+    const selector = '[data-testid="product"]';
+    const products = await page.$$(selector);
+    await products[0].hover();
+    await products[7].hover();
+    await products[9].hover();
+    await page.waitForTimeout(500);
+    await products[9].$eval('[data-testid="secondary-button"]', (button) =>
+      button.click()
+    );
+  });
+
+  it("should should render message no options", async () => {
+    const selector = '[data-testid="radio-group-color-red"]';
+    await page.$eval(selector, (button) => button.click());
+
+    const msg = '[data-testid="no-option-msg"]';
+    await page.waitForSelector(msg);
+
+    const element = await page.$(msg);
+    expect(element).toBeTruthy();
+
+    const message = await page.$eval(msg, (ele) => ele.textContent);
+    expect(message).toBe("no options available");
+  });
+
+  it("should increment quantity", async () => {
+    const selector = '[data-testid="quantity-increment"]';
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should new item to the cart", async () => {
+    const selector = '[data-testid="add-to-cart-btn"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should click view cart button", async () => {
+    await page.waitForTimeout(3000);
+    const selector = '[data-testid="view-cart-btn"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
   it.todo("should check calculated price again once");
   it.todo("should drement second item to 0");
   it.todo("should check strike through");

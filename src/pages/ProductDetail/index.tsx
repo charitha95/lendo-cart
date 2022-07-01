@@ -151,7 +151,12 @@ function ProductDetail() {
   const renderOptions = () => {
     if (variantError) {
       return (
-        <p className={classNames["empty-selection"]}>no options available</p>
+        <p
+          className={classNames["empty-selection"]}
+          data-testid="no-option-msg"
+        >
+          no options available
+        </p>
       );
     }
     if (variant && Object.keys(variant).length !== 0) {
