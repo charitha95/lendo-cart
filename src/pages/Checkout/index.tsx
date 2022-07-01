@@ -21,7 +21,7 @@ function Checkout() {
 
   return (
     <div className={classNames["checkout-wrapper"]}>
-      <h2>My Cart ({getCartQuantity().toString()})</h2>
+      <h2 data-testid="my-cart">My Cart ({getCartQuantity().toString()})</h2>
       <Card variant="light" classes="padding-45">
         <Table
           headers={headers}

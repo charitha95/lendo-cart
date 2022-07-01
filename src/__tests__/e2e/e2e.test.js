@@ -262,7 +262,15 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
   });
 
-  it.todo("should check item is there");
+  xit("should navigate to cart/checkout page", async () => {
+    const selector = '[data-testid="my-cart"]';
+    await page.waitForSelector(selector);
+    const message = await page.$eval(selector, (ele) => ele.textContent);
+    expect(message).toBe("My Cart (2)");
+  });
+
+  // it("should check item is there", async () => {});
+
   it.todo("should check item quntity");
   it.todo("should check item color");
   it.todo("should check item variant");
