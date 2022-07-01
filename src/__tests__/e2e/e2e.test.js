@@ -304,15 +304,25 @@ describe("Lendo Cart E2E", () => {
     expect(value).toBe("storage - 250");
   });
 
-  it("should check item quntity", async () => {
+  xit("should show added item's quntity", async () => {
     const selector = '[data-testid="quantity-count"]';
     const value = await page.$eval(selector, (ele) => ele.textContent);
     expect(value).toBe("2");
   });
 
-  it.todo("should check price");
-  it.todo("should click on increment untill max");
-  it.todo("should check calculated price again");
+  it("should click on increment untill in reaches max", async () => {
+    const selector = '[data-testid="quantity-increment"]';
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should recalculate the price", async () => {
+    const selector = '[data-testid="cart-item-price"]';
+    const value = await page.$eval(selector, (ele) => ele.textContent);
+    const formattedPrice = value.replace(/[^\d.-]/g, "");
+    expect(formattedPrice).toBe("15000.00");
+  });
+
   it.todo("should check header price and count");
   it.todo("should click back");
   it.todo("should clck select a different color");

@@ -85,7 +85,7 @@ function Table({
                 quantity={item.quantity}
               />
             </td>
-            <td className={classNames.total}>
+            <td className={classNames.total} data-testid="cart-item-price">
               {formatCurrency((+item.price * item.quantity).toString())}
             </td>
             <td>
