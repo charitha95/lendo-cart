@@ -25,7 +25,7 @@ function QuantityInput({
       >
         -
       </button>
-      <span>{quantity}</span>
+      <span data-testid="quantity-count">{quantity}</span>
       <button
         type="button"
         disabled={!canIncrement}

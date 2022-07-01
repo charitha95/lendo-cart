@@ -280,18 +280,36 @@ describe("Lendo Cart E2E", () => {
     expect(message).toBe("My Cart (2)");
   });
 
-  it("should show the added item in the cart", async () => {
+  xit("should show the added item in the cart", async () => {
     const selector = '[data-testid="cart-items"]';
     const items = await page.$$(selector);
     expect(items.length).toBe(1);
-
-    const value = await items[0].evaluate((el) => el.textContent);
-    expect(value).toContain("Playstation");
   });
 
-  it.todo("should check item quntity");
-  it.todo("should check item color");
-  it.todo("should check item variant");
+  xit("should show added item's name", async () => {
+    const element = await page.$x("//p[contains(., 'Playstation 4')]");
+    const name = await element[0].evaluate((el) => el.textContent);
+    expect(name).toBe(data.items[2].name);
+  });
+
+  xit("should show added item's color", async () => {
+    const element = await page.$x("//p[contains(., 'white')]");
+    const color = await element[0].evaluate((el) => el.textContent);
+    expect(color).toBe(data.items[2].options[1].color.toString());
+  });
+
+  xit("should show added item's variant", async () => {
+    const selector = '[data-testid="chip"]';
+    const value = await page.$eval(selector, (ele) => ele.textContent);
+    expect(value).toBe("storage - 250");
+  });
+
+  it("should check item quntity", async () => {
+    const selector = '[data-testid="quantity-count"]';
+    const value = await page.$eval(selector, (ele) => ele.textContent);
+    expect(value).toBe("2");
+  });
+
   it.todo("should check price");
   it.todo("should click on increment untill max");
   it.todo("should check calculated price again");
