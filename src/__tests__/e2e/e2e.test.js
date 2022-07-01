@@ -159,7 +159,7 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
   });
 
-  it("should validate quantity inputs", async () => {
+  xit("should validate quantity inputs", async () => {
     const selectorDecrement = '[data-testid="quantity-decrement"]';
     const isDecrementBtnDisabled = await page.$eval(
       selectorDecrement,
@@ -176,7 +176,7 @@ describe("Lendo Cart E2E", () => {
     expect(isIncrementBtnDisabled).toBe(false);
   });
 
-  it("should validate add to cart action", async () => {
+  xit("should validate add to cart action", async () => {
     const button = await page.$x("//button[contains(., 'Add to cart')]");
     const disabled = await page.evaluate((el) => el.disabled, button[0]);
     expect(disabled).toBe(true);
@@ -186,7 +186,11 @@ describe("Lendo Cart E2E", () => {
     expect(message).toBe("please select a storage option from above");
   });
 
-  it.todo("should select a option");
+  it("should select a option", async () => {
+    const selector = '[data-testid="radio-group-storage-250"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
   it.todo("should increment by 3");
   it.todo("should decrement by 1");
   it.todo("should check calculated price");
