@@ -19,6 +19,7 @@ function Layout({ children }: LayoutProps) {
             type="button"
             className={classNames.back}
             onClick={() => navigate(-1)}
+            data-testid="back-btn"
           >
             <img src={backArrow} alt="back" />
             <p>Back</p>

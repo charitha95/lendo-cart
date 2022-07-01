@@ -323,7 +323,7 @@ describe("Lendo Cart E2E", () => {
     expect(formattedPrice).toBe("15000.00");
   });
 
-  it("should update price and count in the header", async () => {
+  xit("should update price and count in the header", async () => {
     const element = await page.$('[data-testid="header-total"]');
     const value = await page.evaluate((el) => el.textContent, element);
 
@@ -336,13 +336,47 @@ describe("Lendo Cart E2E", () => {
     expect(count).toBe("3");
   });
 
-  it.todo("should click back");
-  it.todo("should clck select a different color");
-  it.todo("should select a different option");
-  it.todo("should increment");
-  it.todo("should click add to cart");
-  it.todo("should click on header cart button");
-  it.todo("should click back once");
+  it("should click on back button", async () => {
+    const selector = '[data-testid="back-btn"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should choose different color", async () => {
+    const selector = '[data-testid="radio-group-color-black"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should choose a different option", async () => {
+    const selector = '[data-testid="radio-group-storage-500"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should increment the quantity for new option", async () => {
+    const selector = '[data-testid="quantity-increment"]';
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should click add to cart", async () => {
+    const selector = '[data-testid="add-to-cart-btn"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should click on the header cart button", async () => {
+    await page.waitForTimeout(3000);
+    const selector = '[data-testid="header-total"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
+  it("should click back twice", async () => {
+    const selector = '[data-testid="back-btn"]';
+    await page.$eval(selector, (button) => button.click());
+    await page.waitForTimeout(3000);
+    await page.$eval(selector, (button) => button.click());
+  });
+
   it.todo("should click back again");
   it.todo("should select only color option item");
   it.todo("should should render message no options");
