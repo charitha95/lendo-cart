@@ -18,7 +18,7 @@ describe("Lendo Cart E2E", () => {
     page = await browser.newPage();
   });
 
-  it(
+  xit(
     "should render home page with welcome message",
     async () => {
       await page.goto("http://localhost:3000");
@@ -30,4 +30,18 @@ describe("Lendo Cart E2E", () => {
     },
     timeout
   );
+
+  xit("should show 0 as the item count in the header", async () => {
+    await page.goto("http://localhost:3000");
+    const selector = '[data-testid="bubble"]';
+    await page.waitForSelector(selector);
+    await expect(page).toMatchElement(selector, { text: "0" });
+  });
+
+  it("should render a list of products", async () => {
+    await page.goto("http://localhost:3000");
+    const selectors = '[data-testid="product"]';
+    const products = await page.$$(selectors);
+    await expect(products.length).toBe(10);
+  });
 });

@@ -21,7 +21,7 @@ function ProductCard({
   availabile
 }: ProductCardProps) {
   return (
-    <div className={classNames["product-wrapper"]}>
+    <div className={classNames["product-wrapper"]} data-testid="product">
       <Card variant="light" classes={classNames["product-card"]}>
         <img src={image} alt="product" />
         {!availabile ? <Chip text="out of stock" variant="danger" /> : null}
