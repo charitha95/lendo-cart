@@ -52,7 +52,9 @@ function Table({
                 <ColorCircle size="sm" variant={item.color} />
               </div>
               <div className={classNames["misc-info"]}>
-                <p className={classNames.name}>{item.name}</p>
+                <p className={classNames.name} data-testid="cart-item-name">
+                  {item.name}
+                </p>
                 <section>
                   <p
                     className={`${

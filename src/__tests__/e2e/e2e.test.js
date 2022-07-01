@@ -282,8 +282,11 @@ describe("Lendo Cart E2E", () => {
 
   it("should show the added item in the cart", async () => {
     const selector = '[data-testid="cart-items"]';
-    const products = await page.$$(selector);
-    await expect(products.length).toBe(1);
+    const items = await page.$$(selector);
+    expect(items.length).toBe(1);
+
+    const value = await items[0].evaluate((el) => el.textContent);
+    expect(value).toContain("Playstation");
   });
 
   it.todo("should check item quntity");
