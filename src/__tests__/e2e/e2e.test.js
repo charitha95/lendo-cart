@@ -280,7 +280,11 @@ describe("Lendo Cart E2E", () => {
     expect(message).toBe("My Cart (2)");
   });
 
-  // it("should check item is there", async () => {});
+  it("should show the added item in the cart", async () => {
+    const selector = '[data-testid="cart-items"]';
+    const products = await page.$$(selector);
+    await expect(products.length).toBe(1);
+  });
 
   it.todo("should check item quntity");
   it.todo("should check item color");

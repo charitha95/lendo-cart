@@ -38,7 +38,7 @@ function Table({
           ))}
         </tr>
       </thead>
-      <tbody>
+      <tbody data-testid="cart-items">
         {tableItems.map((item) => (
           <tr
             key={`${item.id}-${item.variant}-${item.color}`}
