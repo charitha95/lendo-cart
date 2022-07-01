@@ -25,7 +25,7 @@ function Table({
   if (tableItems.length === 0)
     return (
       <div className={classNames.empty}>
-        <img src={emptyCartIcon} alt="empty car" />
+        <img src={emptyCartIcon} alt="empty car" data-testid="empty-img" />
       </div>
     );
 

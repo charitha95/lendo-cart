@@ -458,7 +458,7 @@ describe("Lendo Cart E2E", () => {
     timeout
   );
 
-  it("should check count on header", async () => {
+  it("should recalculate total price and count on header", async () => {
     const element = await page.$('[data-testid="header-total"]');
     const value = await page.evaluate((el) => el.textContent, element);
 
@@ -471,6 +471,23 @@ describe("Lendo Cart E2E", () => {
     expect(count).toBe("4");
   });
 
-  it.todo("should remove all");
-  it.todo("should show empty cart");
+  it(
+    "should remove all items",
+    async () => {
+      const selectors = '[data-testid="table-items-tr"]';
+      const items = await page.$$(selectors);
+      await items[0].$eval('[data-testid="close-button"]', (button) =>
+        button.click()
+      );
+      await items[1].$eval('[data-testid="close-button"]', (button) =>
+        button.click()
+      );
+    },
+    timeout
+  );
+
+  it("should show empty cart", async () => {
+    const viewCartBtn = await page.$('[data-testid="empty-img"]');
+    expect(viewCartBtn).toBeTruthy();
+  });
 });
