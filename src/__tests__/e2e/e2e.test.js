@@ -16,7 +16,8 @@ describe("Lendo Cart E2E", () => {
     browser = await puppeteer.launch({
       headless: false,
       slowMo: 200,
-      defaultViewport: null
+      defaultViewport: null,
+      args: ["--start-maximized"]
     });
     page = await browser.newPage();
   });
@@ -191,8 +192,22 @@ describe("Lendo Cart E2E", () => {
     await page.$eval(selector, (button) => button.click());
   });
 
-  it.todo("should increment by 3");
-  it.todo("should decrement by 1");
+  it("should increment quantity by 3", async () => {
+    const selector = '[data-testid="quantity-increment"]';
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+  });
+  it("should decrement quantity by 1", async () => {
+    const selector = '[data-testid="quantity-increment"]';
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+    await page.$eval(selector, (button) => button.click());
+
+    const selectord = '[data-testid="quantity-decrement"]';
+    await page.$eval(selectord, (button) => button.click());
+  });
+
   it.todo("should check calculated price");
   it.todo("should check count in add to cart button");
   it.todo("should click on add to cart");
