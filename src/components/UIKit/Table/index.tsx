@@ -45,6 +45,7 @@ function Table({
             className={`${
               item.quantity === 0 ? classNames["stike-though"] : null
             }`}
+            data-testid="table-items-tr"
           >
             <td className={classNames["product-info"]}>
               <div className={classNames["img-section"]}>
