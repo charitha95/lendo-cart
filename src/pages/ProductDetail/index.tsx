@@ -232,10 +232,14 @@ function ProductDetail() {
         {product.options ? (
           <div className={`${classNames["info-section"]} col-12 col-md-6`}>
             <Card variant="light" classes="padding-45">
-              <p className={classNames.brand}>{product.brand}</p>
+              <p className={classNames.brand} data-testid="product-brand">
+                {product.brand}
+              </p>
               <div className={classNames.block}>
-                <h2 className={classNames.name}>{product.name}</h2>
-                <p className={classNames.price}>
+                <h2 className={classNames.name} data-testid="product-name">
+                  {product.name}
+                </h2>
+                <p className={classNames.price} data-testid="product-price">
                   {formatCurrency(product.price)}
                 </p>
               </div>
@@ -247,7 +251,7 @@ function ProductDetail() {
                   alt="weight"
                   className={classNames.weight}
                 />
-                <p>{product.weight}kg</p>
+                <p data-testid="product-weight">{product.weight}kg</p>
               </div>
               <p className={classNames.desc}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

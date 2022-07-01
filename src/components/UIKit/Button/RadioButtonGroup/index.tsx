@@ -12,7 +12,7 @@ function RadioButtonGroup({ name, options, onChange }: RadioButtonGroupProps) {
     <div onChange={onChange} className={classNames["radio-group"]}>
       <p className={classNames.title}>{name}</p>
       {options.map((option) => (
-        <label key={`${option}`} data-testid="radio-group">
+        <label key={`${option}`} data-testid={`radio-group-${name}-${option}`}>
           <input type="radio" value={option} name={name} /> {option}
         </label>
       ))}
