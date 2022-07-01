@@ -245,7 +245,7 @@ describe("Lendo Cart E2E", () => {
     expect(addTOCartBtn).toBeFalsy();
   });
 
-  it("should render the message 'already in the cart'", async () => {
+  xit("should render the message 'already in the cart'", async () => {
     const selector = '[data-testid="already-added-msg"]';
     await page.waitForSelector(selector);
 
@@ -256,7 +256,12 @@ describe("Lendo Cart E2E", () => {
     expect(message).toBe("2 items already in the cart");
   });
 
-  it.todo("should click view cart");
+  it("should click view cart", async () => {
+    await page.waitForTimeout(3000);
+    const selector = '[data-testid="view-cart-btn"]';
+    await page.$eval(selector, (button) => button.click());
+  });
+
   it.todo("should check item is there");
   it.todo("should check item quntity");
   it.todo("should check item color");
