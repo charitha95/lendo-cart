@@ -4,7 +4,7 @@
 .secondary-btn {
   border-radius: $border-radius-s-btn;
   @extend %btn;
-
+  width: fit-content;
   &.dark {
     background: $primary-color;
     color: #fff;

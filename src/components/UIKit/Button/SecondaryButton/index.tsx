@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import classNames from "./style.module.scss";
 
 type SecondaryButtonProps = {
@@ -18,15 +19,17 @@ function SecondaryButton({
   onClick
 }: SecondaryButtonProps) {
   return (
-    <button
+    <motion.button
       type="button"
       className={`${classNames[variant]} ${classNames["secondary-btn"]} ${classes}`}
       onClick={onClick}
       data-testid={`${testId || "secondary-button"}`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       {text}
       <img src={icon} alt="cart" />
-    </button>
+    </motion.button>
   );
 }
 

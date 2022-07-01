@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Bubble from "../../Bubble";
 import classNames from "./style.module.scss";
 
@@ -21,17 +22,19 @@ function PrimaryButton({
   onClick
 }: PrimaryButtonProps) {
   return (
-    <button
+    <motion.button
       type="button"
       className={`${classNames[variant]} ${classNames["primary-btn"]}`}
       onClick={onClick}
       disabled={disabled}
       data-testid={`${testId || "primary-button"}`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       <img src={icon} alt="cart" />
       {text}
       <Bubble text={quantity} variant={variant === "light" ? "red" : "white"} />
-    </button>
+    </motion.button>
   );
 }
 

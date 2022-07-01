@@ -1,11 +1,28 @@
+import { motion } from "framer-motion";
 import { CartItem, Colors } from "../../../types";
 import { CloseButton } from "../Button";
+
 import ColorCircle from "../ColorCircle";
 import classNames from "./style.module.scss";
 import Chip from "../Chip";
 import QuantityInput from "../QuantityInput";
 import formatCurrency from "../../../helpers/formatCurrency";
 import emptyCartIcon from "../../../assets/icons/empty.svg";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3
+    }
+  }
+};
+
+const listItem = {
+  hidden: { y: 20, opacity: 0 },
+  show: { y: 0, opacity: 1 }
+};
 
 type TableProps = {
   headers: string[];
@@ -38,14 +55,20 @@ function Table({
           ))}
         </tr>
       </thead>
-      <tbody data-testid="cart-items">
+      <motion.tbody
+        data-testid="cart-items"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
         {tableItems.map((item) => (
-          <tr
+          <motion.tr
             key={`${item.id}-${item.variant}-${item.color}`}
             className={`${
               item.quantity === 0 ? classNames["stike-though"] : null
             }`}
             data-testid="table-items-tr"
+            variants={listItem}
           >
             <td className={classNames["product-info"]}>
               <div className={classNames["img-section"]}>
@@ -96,9 +119,9 @@ function Table({
                 }
               />
             </td>
-          </tr>
+          </motion.tr>
         ))}
-      </tbody>
+      </motion.tbody>
     </table>
   );
 }

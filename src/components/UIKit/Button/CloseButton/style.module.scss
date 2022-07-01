@@ -4,5 +4,7 @@
   @extend %btn;
   padding: 10px 10px;
   border-radius: 50%;
-
+  transform: none;
+  display: flex;
+  justify-content: center;
 }
