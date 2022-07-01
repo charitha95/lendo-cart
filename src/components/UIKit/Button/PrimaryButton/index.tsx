@@ -7,6 +7,7 @@ type PrimaryButtonProps = {
   variant: "light" | "dark";
   quantity: string;
   disabled?: boolean;
+  testId?: string;
   onClick?: () => void;
 };
 
@@ -16,6 +17,7 @@ function PrimaryButton({
   variant,
   quantity,
   disabled = false,
+  testId,
   onClick
 }: PrimaryButtonProps) {
   return (
@@ -24,7 +26,7 @@ function PrimaryButton({
       className={`${classNames[variant]} ${classNames["primary-btn"]}`}
       onClick={onClick}
       disabled={disabled}
-      data-testid="primary-button"
+      data-testid={`${testId || "primary-button"}`}
     >
       <img src={icon} alt="cart" />
       {text}

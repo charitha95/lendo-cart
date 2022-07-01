@@ -229,7 +229,15 @@ describe("Lendo Cart E2E", () => {
     await button[0].click();
   });
 
-  it.todo("should check count on header");
+  it("should update the price in the header", async () => {
+    const element = await page.$('[data-testid="header-total"]');
+    const value = await page.evaluate((el) => el.textContent, element);
+
+    const priceForTwo = +data.items[2].price * 2;
+    const formattedPrice = value.split(".")[0].replace(/[^\d.-]/g, "");
+    expect(priceForTwo).toBe(+formattedPrice);
+  });
+
   it.todo("should check renders view cart button");
   it.todo("should check message 'already in the cart'");
   it.todo("should click view cart");

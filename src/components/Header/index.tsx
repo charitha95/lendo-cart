@@ -12,7 +12,7 @@ function Header() {
   const { getCartQuantity, getTotal } = useCart();
 
   return (
-    <div className={classNames.header}>
+    <div className={classNames.header} data-testid="header">
       <Container>
         <div className={classNames.content}>
           <Link to="/">
@@ -26,6 +26,7 @@ function Header() {
                 icon={cartIcon}
                 variant="light"
                 quantity={getCartQuantity().toString()}
+                testId="header-total"
               />
             </Link>
           </div>
