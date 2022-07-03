@@ -1,5 +1,14 @@
 # React Repo Finder.
 
+## Demo
+Demo: https://lendo-cart.netlify.app/ <br/>
+
+## Demo status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d7246197-587b-46a6-9b8d-36353e5e07ad/deploy-status)](https://app.netlify.com/sites/lendo-cart/deploys)
+
+<br/><br/>
+
+
 ## Description :newspaper:
 
 Lendo cart is an assigment given from lendo group to asses the technical capability of the candidate.
