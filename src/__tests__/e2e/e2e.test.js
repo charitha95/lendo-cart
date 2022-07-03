@@ -61,6 +61,7 @@ describe("Lendo Cart E2E", () => {
     "should reveal view button only on product card that hovered",
     async () => {
       const selector = '[data-testid="product"]';
+      await page.waitForSelector(selector);
       const products = await page.$$(selector);
       await products[0].hover();
       await products[3].hover();

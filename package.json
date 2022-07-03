@@ -23,7 +23,7 @@
   "scripts": {
     "start": "set BROWSER=open && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:unit": "react-scripts test --testPathPattern=src/__tests__/unit",
     "start:e2e": "react-scripts start",
     "test:e2e": "jest -c jest.config.js --detectOpenHandles",
     "eject": "react-scripts eject",
