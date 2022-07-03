@@ -36,6 +36,8 @@ This project uses react and its core features to complete the given task.
 - pupperteer `^2.7.1`
 - jest-pupperteer `^6.1.0`
 
+<br/><br/>
+
 ## Configurations
 
 #### ts
@@ -66,7 +68,7 @@ Uses jest to run test cases written with `testing-library`.
 
 ## Best practices :sparkles:
 
-Following are some of the best practices that this project concered about.
+Following are some of the features and best practices that this project concered about.
 
 ✅ Separation of Concern (SoC).
 
