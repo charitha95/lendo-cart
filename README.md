@@ -1,46 +1,99 @@
-# Getting Started with Create React App
+# React Repo Finder.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description :newspaper:
 
-## Available Scripts
+Lendo cart is an assigment given from lendo group to asses the technical capability of the candidate.
+This is my take on the assignment.
+<br/>
+This project uses react and its core features to complete the given task.
+<br/><br/>
 
-In the project directory, you can run:
+## Installing :wrench:
 
-### `npm start`
+- Copy the url https://github.com/charitha95/lendo-cart.git
+- Do a `git clone` with the url.
+- Run `npm i` in terminal to install modules.
+  <br/><br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Running and testing the project :runner:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Run `npm run start` in terminal to run the project. This will spin up the app and open in a browser.<br/>
+- Uni Test `npm run test:unit` in terminal to run the unit tests. This will run all unit tests inside the unit folder.
+- E2E Test `npm run test:e2e` in terminal to run the e2e tests. This will spin up a server and open in a testing broweser.
+  <br/><br/>
 
-### `npm test`
+## Plugins and libraries used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- typescript `^4.7.4`
+- eslint `^8.18.0`
+- prettier `^2.7.1`
+- husky `^8.0.0`
+- react-router-dom `^6.3.0`
+- sass `^1.53.0`
+- framer-motion `^6.3.16`
+- jest `^27.5.2`
+- testing library `^^13.3.0`
+- pupperteer `^2.7.1`
+- jest-pupperteer `^6.1.0`
 
-### `npm run build`
+## Configurations
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### ts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+App has been initialized with `--template typescript`, which gives you the typescript configuration out of the box.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### ESLint
 
-### `npm run eject`
+This project uses `airbnb` stye guideline for eslint rules, some i've overriden according to the project's requirements.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Prettier
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Uses an own set of formatting rules and configurations to make sure the project follows a good file format mechanism.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Husky
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Configured to run eslint before comming anything to the branch with `huskey` pre commit hook.
 
-## Learn More
+#### Jest
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Uses jest to run test cases written with `testing-library`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Pupperteer
+
+`Pupperteer` used to automate and run e2e test cases. Read more about configurations in `jest.config.js` and `jest-puppeteer.config.js`.
+
+<br/><br/>
+
+## Best practices :sparkles:
+
+Following are some of the best practices that this project concered about.
+
+✅ Separation of Concern (SoC).
+
+✅ Single source of truth.
+
+✅ Component based architecture.
+
+✅ Typescript.
+
+✅ Use cutting edge features from react (hooks and context api).
+
+✅ Pure CSS without any css frameworks.
+
+✅ Motion graphic user feedbacks.
+
+✅ CSS Preprocessors.
+
+✅ CSS Modules.
+
+✅ Linting.
+
+✅ File formatting.
+
+✅ Pre commit hooks.
+
+✅ Unit Testing.
+
+✅ E2E Testing.
+
+✅ Sleek UI with reusable components.
